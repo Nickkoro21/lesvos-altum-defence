@@ -114,7 +114,252 @@
     setupLangToggle();
     setupConfusionToggle();
     paintHeatmap();
+    setupNdsm();
+    setupPipeline();
   });
+
+  /* ===================== Pipeline spotlight (slide "One shared pipeline") =====================
+     Inlined SVG diagram; each of the 7 phase bullets is synced to the matching phase band of the
+     flowchart. As a bullet is revealed, two white overlay rects dim everything except that phase's
+     horizontal band (colours preserved). The final callout lifts the dimming to show the whole pipeline. */
+  function setupPipeline() {
+    var svg = document.getElementById('pp-svg');
+    if (!svg) return;
+    var dimTop = document.getElementById('pp-dim-top'), dimBot = document.getElementById('pp-dim-bot');
+    var BANDS = { 1: [118, 178], 2: [200, 268], 3: [272, 326], 4: [338, 400], 5: [410, 482], 6: [486, 540], 7: [548, 672] };
+    function spotlight(ph) {
+      var b = BANDS[ph];
+      if (!b) { dimTop.setAttribute('opacity', '0'); dimBot.setAttribute('opacity', '0'); dimTop.setAttribute('height', '0'); dimBot.setAttribute('height', '0'); return; }
+      dimTop.setAttribute('y', '0'); dimTop.setAttribute('height', b[0]); dimTop.setAttribute('opacity', '0.62');
+      dimBot.setAttribute('y', b[1]); dimBot.setAttribute('height', 720 - b[1]); dimBot.setAttribute('opacity', '0.62');
+    }
+    function activePhase() {
+      var sec = document.querySelector('section.pipeline-slide');
+      if (!sec) return 0;
+      var callout = sec.querySelector('.callout');
+      if (callout && callout.classList.contains('visible')) return 0; // final: reveal the whole pipeline
+      var max = 0;
+      sec.querySelectorAll('.pp-li.visible').forEach(function (li) { var p = +li.getAttribute('data-ph'); if (p > max) max = p; });
+      return max;
+    }
+    function inSlide(e) { return e.fragment && e.fragment.closest && e.fragment.closest('.pipeline-slide'); }
+    deck.on('fragmentshown', function (e) { if (inSlide(e)) spotlight(activePhase()); });
+    deck.on('fragmenthidden', function (e) { if (inSlide(e)) spotlight(activePhase()); });
+    deck.on('slidechanged', function () { var s = document.querySelector('section.present'); if (s && s.classList.contains('pipeline-slide')) spotlight(activePhase()); });
+    spotlight(0);
+  }
+
+  /* ===================== nDSM = DSM − DTM explainer animation =====================
+     A 2-D side-profile cross-section: terrain rises to a hill; objects sit on it with
+     DSM heights (terrain + own height). Across reveal fragments the terrain flattens to
+     0 m and every object drops to its TRUE height above ground (nDSM). Math/icons ported
+     from the vetted design candidate; driven by .ndsm-step fragments via deck events. */
+  function setupNdsm() {
+    var scene = document.getElementById('nd-scene');
+    if (!scene) return;
+    var SVG = 'http://www.w3.org/2000/svg';
+    var PLOT = { x0: 120, x1: 1224, yTop: 170, yBot: 544 };
+    var plotW = PLOT.x1 - PLOT.x0, plotH = PLOT.yBot - PLOT.yTop;
+    var M_MAX = 58, M_TICK_MAX = 50;
+    function mToY(m) { return PLOT.yBot - (m / M_MAX) * plotH; }
+    function px(frac) { return PLOT.x0 + frac * plotW; }
+
+    var CTRL = [
+      { t: 0.00, m: 0 }, { t: 0.075, m: 0 }, { t: 0.22, m: 5 }, { t: 0.43, m: 20 },
+      { t: 0.585, m: 31 }, { t: 0.71, m: 40 }, { t: 0.83, m: 43 }, { t: 0.945, m: 40 }, { t: 1.00, m: 39 }
+    ];
+    function terrainM(t) {
+      t = Math.max(0, Math.min(1, t));
+      for (var i = 0; i < CTRL.length - 1; i++) {
+        var a = CTRL[i], b = CTRL[i + 1];
+        if (t >= a.t && t <= b.t) { var u = (t - a.t) / (b.t - a.t || 1), e = u * u * (3 - 2 * u); return a.m + (b.m - a.m) * e; }
+      }
+      return CTRL[CTRL.length - 1].m;
+    }
+    var OBJ = [
+      { id: 'car1', type: 'car', t: 0.075, own: 1.5, label: 'Car' },
+      { id: 'tree2', type: 'tree', t: 0.22, own: 5, label: 'Tree' },
+      { id: 'tree1', type: 'tree', t: 0.43, own: 5, label: 'Tree' },
+      { id: 'bldg2', type: 'building', t: 0.585, own: 8, label: 'Building' },
+      { id: 'bldg1', type: 'building', t: 0.71, own: 8, label: 'Building' },
+      { id: 'car2', type: 'car', t: 0.945, own: 1.5, label: 'Car', hero: true }
+    ];
+    OBJ.forEach(function (o) { o.terr = terrainM(o.t); o.dsm = o.terr + o.own; });
+
+    (function () {
+      var g = document.getElementById('nd-grid');
+      for (var m = 0; m <= M_TICK_MAX; m += 10) {
+        var y = mToY(m);
+        var ln = document.createElementNS(SVG, 'line');
+        ln.setAttribute('x1', PLOT.x0); ln.setAttribute('x2', PLOT.x1); ln.setAttribute('y1', y); ln.setAttribute('y2', y);
+        ln.setAttribute('stroke', 'var(--line)'); ln.setAttribute('stroke-width', m === 0 ? 0 : 1);
+        if (m !== 0) ln.setAttribute('stroke-dasharray', '3 6');
+        g.appendChild(ln);
+        var tk = document.createElementNS(SVG, 'text');
+        tk.setAttribute('x', PLOT.x0 - 11); tk.setAttribute('y', y + 4); tk.setAttribute('text-anchor', 'end');
+        tk.setAttribute('font-size', '12.5'); tk.setAttribute('fill', 'var(--ink-faint)'); tk.setAttribute('font-weight', '600');
+        tk.textContent = m; g.appendChild(tk);
+      }
+    })();
+
+    function makeCar(s) {
+      var g = document.createElementNS(SVG, 'g'); var w = 36 * s, h = 13 * s, r = 4 * s;
+      g.innerHTML =
+        '<ellipse cx="0" cy="2" rx="' + (w * 0.55) + '" ry="3.2" fill="var(--c-shadow)" opacity="0.20"/>' +
+        '<rect x="' + (-w / 2) + '" y="' + (-h) + '" width="' + w + '" height="' + h + '" rx="' + r + '" fill="var(--c-vehicle)" stroke="#B8951F" stroke-width="1.2"/>' +
+        '<path d="M' + (-w * 0.30) + ',' + (-h) + ' q ' + (w * 0.06) + ' ' + (-h * 0.85) + ' ' + (w * 0.30) + ' ' + (-h * 0.85) + ' l ' + (w * 0.18) + ' 0 q ' + (w * 0.20) + ' 0 ' + (w * 0.24) + ' ' + (h * 0.85) + ' z" fill="#F6E08F" stroke="#B8951F" stroke-width="0.9"/>' +
+        '<circle cx="' + (-w * 0.27) + '" cy="0" r="' + (4.8 * s) + '" fill="var(--c-road)"/>' +
+        '<circle cx="' + (w * 0.27) + '" cy="0" r="' + (4.8 * s) + '" fill="var(--c-road)"/>' +
+        '<circle cx="' + (-w * 0.27) + '" cy="0" r="' + (1.9 * s) + '" fill="#9aa0a6"/>' +
+        '<circle cx="' + (w * 0.27) + '" cy="0" r="' + (1.9 * s) + '" fill="#9aa0a6"/>';
+      return g;
+    }
+    function makeTree(s) {
+      var g = document.createElementNS(SVG, 'g');
+      g.innerHTML =
+        '<ellipse cx="0" cy="2" rx="14" ry="3.4" fill="var(--c-shadow)" opacity="0.20"/>' +
+        '<rect x="' + (-2.6 * s) + '" y="' + (-13 * s) + '" width="' + (5.2 * s) + '" height="' + (14 * s) + '" rx="1.6" fill="#7A5230"/>' +
+        '<circle cx="0" cy="' + (-23 * s) + '" r="' + (13.5 * s) + '" fill="var(--c-tree)"/>' +
+        '<circle cx="' + (-8.5 * s) + '" cy="' + (-16 * s) + '" r="' + (9 * s) + '" fill="#469A4A"/>' +
+        '<circle cx="' + (8.5 * s) + '" cy="' + (-16 * s) + '" r="' + (9 * s) + '" fill="#327B36"/>' +
+        '<circle cx="0" cy="' + (-30 * s) + '" r="' + (8 * s) + '" fill="#46A04A"/>';
+      return g;
+    }
+    function makeBuilding(s) {
+      var g = document.createElementNS(SVG, 'g'); var w = 46 * s, h = 44 * s, win = '';
+      for (var rr = 0; rr < 3; rr++) for (var c = 0; c < 3; c++) {
+        var wx = -w / 2 + 8 * s + c * (12 * s), wy = -h + 11 * s + rr * (12 * s);
+        win += '<rect x="' + wx + '" y="' + wy + '" width="' + (6.5 * s) + '" height="' + (7 * s) + '" rx="1" fill="#F7C2C2"/>';
+      }
+      g.innerHTML =
+        '<ellipse cx="0" cy="2" rx="' + (w * 0.62) + '" ry="3.6" fill="var(--c-shadow)" opacity="0.20"/>' +
+        '<rect x="' + (-w / 2) + '" y="' + (-h) + '" width="' + w + '" height="' + h + '" rx="2" fill="var(--c-building)" stroke="#A81616" stroke-width="1.2"/>' +
+        '<path d="M' + (-w / 2 - 4 * s) + ',' + (-h) + ' L0,' + (-h - 14 * s) + ' L' + (w / 2 + 4 * s) + ',' + (-h) + ' Z" fill="#A81616"/>' +
+        win + '<rect x="' + (-7 * s) + '" y="' + (-13 * s) + '" width="' + (14 * s) + '" height="' + (13 * s) + '" rx="1" fill="#8A1212"/>';
+      return g;
+    }
+
+    var objLayer = document.getElementById('nd-objects');
+    OBJ.forEach(function (o) {
+      var grp = document.createElementNS(SVG, 'g');
+      o.scale = o.type === 'building' ? 1.0 : (o.type === 'tree' ? 1.0 : 1.1);
+      var icon = (o.type === 'car' ? makeCar : o.type === 'tree' ? makeTree : makeBuilding)(o.scale);
+      grp.appendChild(icon);
+      var brk = document.createElementNS(SVG, 'g'); brk.setAttribute('opacity', '0');
+      var brLine = document.createElementNS(SVG, 'line');
+      brLine.setAttribute('stroke', 'var(--ink-faint)'); brLine.setAttribute('stroke-width', '1.1'); brLine.setAttribute('stroke-dasharray', '2 3');
+      brk.appendChild(brLine); grp.appendChild(brk);
+      o.dom = { grp: grp, icon: icon, brk: brk, brLine: brLine };
+      var chip = document.createElementNS(SVG, 'g');
+      var chipBg = document.createElementNS(SVG, 'rect');
+      chipBg.setAttribute('rx', '6'); chipBg.setAttribute('height', '27');
+      chipBg.setAttribute('fill', o.hero ? 'var(--c-7band)' : '#FFFFFF');
+      chipBg.setAttribute('stroke', o.hero ? 'var(--c-7band)' : 'var(--line)'); chipBg.setAttribute('stroke-width', '1.4');
+      var chipTx = document.createElementNS(SVG, 'text');
+      chipTx.setAttribute('font-size', '15'); chipTx.setAttribute('font-weight', '700'); chipTx.setAttribute('text-anchor', 'middle');
+      chipTx.setAttribute('fill', o.hero ? '#fff' : 'var(--ink)');
+      chip.appendChild(chipBg); chip.appendChild(chipTx); grp.appendChild(chip);
+      o.dom.chip = chip; o.dom.chipBg = chipBg; o.dom.chipTx = chipTx;
+      var nm = document.createElementNS(SVG, 'text');
+      nm.setAttribute('font-size', '11.5'); nm.setAttribute('font-weight', '700'); nm.setAttribute('text-anchor', 'middle');
+      nm.setAttribute('fill', o.hero ? 'var(--c-7band)' : 'var(--ink-faint)'); nm.setAttribute('letter-spacing', '.04em');
+      nm.textContent = o.hero ? (o.label + ' ★') : o.label;
+      grp.appendChild(nm); o.dom.nm = nm;
+      objLayer.appendChild(grp);
+    });
+
+    function groundM(o, lift) { return o.terr * (1 - lift); }
+    function iconPixHeight(o) { if (o.type === 'car') return 13 * o.scale + 6; if (o.type === 'tree') return 38 * o.scale; return 58 * o.scale; }
+    function iconWidth(o) { if (o.type === 'car') return 36 * o.scale; if (o.type === 'tree') return 27 * o.scale; return 46 * o.scale; }
+    function fmtVal(m) { var r = Math.round(m * 10) / 10; return ((r % 1 === 0) ? r.toFixed(0) : r.toFixed(1)) + ' m'; }
+    function placeObject(o, lift, label) {
+      var gx = px(o.t), groundY = mToY(groundM(o, lift));
+      o.dom.icon.setAttribute('transform', 'translate(' + gx + ',' + groundY + ')');
+      var iconTopY = groundY - iconPixHeight(o), chipY = iconTopY - 33;
+      if (chipY < PLOT.yTop + 3) chipY = PLOT.yTop + 3;
+      o.dom.chipTx.textContent = label;
+      var w = Math.max(56, label.length * 9.0 + 18);
+      o.dom.chipBg.setAttribute('x', gx - w / 2); o.dom.chipBg.setAttribute('y', chipY); o.dom.chipBg.setAttribute('width', w);
+      o.dom.chipTx.setAttribute('x', gx); o.dom.chipTx.setAttribute('y', chipY + 18.5);
+      o.dom.nm.setAttribute('x', gx); o.dom.nm.setAttribute('y', chipY - 6);
+      o.dom.brLine.setAttribute('x1', gx - iconWidth(o) / 2 - 7); o.dom.brLine.setAttribute('x2', gx - iconWidth(o) / 2 - 7);
+      o.dom.brLine.setAttribute('y1', groundY); o.dom.brLine.setAttribute('y2', iconTopY);
+    }
+
+    var terrainFill = document.getElementById('nd-terrainFill'), terrainLine = document.getElementById('nd-terrainLine'),
+        grassLine = document.getElementById('nd-grassLine'), dtmTag = document.getElementById('nd-dtmTag'),
+        zeroTag = document.getElementById('nd-zeroTag'), zeroBase = document.getElementById('nd-zeroBase'),
+        pillEl = document.getElementById('nd-pill'), subEl = document.getElementById('nd-sub'), capEl = document.getElementById('nd-cap');
+    function drawTerrain(flatAmt) {
+      var pts = [], N = 120;
+      for (var i = 0; i <= N; i++) { var t = i / N, m = terrainM(t) * (1 - flatAmt); pts.push([px(t), mToY(m)]); }
+      var d = 'M' + pts[0][0].toFixed(1) + ',' + pts[0][1].toFixed(1);
+      for (var k = 1; k < pts.length; k++) d += ' L' + pts[k][0].toFixed(1) + ',' + pts[k][1].toFixed(1);
+      terrainFill.setAttribute('d', d + ' L' + PLOT.x1 + ',' + PLOT.yBot + ' L' + PLOT.x0 + ',' + PLOT.yBot + ' Z');
+      terrainLine.setAttribute('d', d); grassLine.setAttribute('d', d);
+    }
+    var STAGES = [
+      { pill: 'Stage 1 · DSM', sub: '<b>DSM</b> = terrain elevation + object height. The same car reads <b>41.5 m</b> on the hilltop but <b>1.5 m</b> in the valley — terrain relief dominates the signal.', flat: 0, lift: 0, dtm: false, zero: false, brk: false, chip: function (o) { return fmtVal(o.dsm); } },
+      { pill: 'Stage 2 · DTM', sub: 'The <b>DTM</b> is the bare-earth surface beneath every object — the terrain baseline that will be subtracted.', flat: 0, lift: 0, dtm: true, zero: false, brk: false, chip: function (o) { return fmtVal(o.dsm); } },
+      { pill: 'Stage 3 · nDSM = DSM − DTM', sub: 'Subtract the terrain: the ground <b>flattens to 0 m</b> and every object drops to its <b>true height above ground</b>. The hilltop car: <b>41.5 m → 1.5 m</b>.', flat: 1, lift: 1, dtm: false, zero: true, brk: true, chip: function (o) { return fmtVal(o.own); } },
+      { pill: 'Why it matters', sub: 'Normalised, terrain-independent geometry: <b>a car is 1.5 m everywhere</b>, trees 5 m, buildings 8 m — regardless of where they sit on the slope.', flat: 1, lift: 1, dtm: false, zero: true, brk: true, chip: function (o) { return fmtVal(o.own); } }
+    ];
+    function applyText(S, i) {
+      if (capEl) capEl.classList.toggle('flat', i >= 2);
+      if (pillEl) pillEl.textContent = S.pill;
+      if (subEl) subEl.innerHTML = S.sub;
+    }
+    function settle(i) {
+      var S = STAGES[i];
+      drawTerrain(S.flat); terrainFill.setAttribute('fill-opacity', S.flat > 0.5 ? 0.30 : 0.55);
+      OBJ.forEach(function (o) { placeObject(o, S.lift, S.chip(o)); o.dom.brk.setAttribute('opacity', S.brk ? '1' : '0'); });
+      dtmTag.setAttribute('opacity', S.dtm ? '1' : '0');
+      if (S.dtm) { var ty = mToY(terrainM(0.50)); dtmTag.setAttribute('transform', 'translate(' + (px(0.50) - 75) + ',' + (ty + 62) + ')'); }
+      zeroBase.setAttribute('opacity', S.zero ? '1' : '0'); zeroTag.setAttribute('opacity', S.zero ? '1' : '0');
+      if (S.zero) { var zy = mToY(0); zeroBase.setAttribute('y1', zy); zeroBase.setAttribute('y2', zy); zeroTag.setAttribute('transform', 'translate(' + (PLOT.x0 + 14) + ',' + (zy - 30) + ')'); }
+      applyText(S, i);
+    }
+    var anim = null, cur = 0;
+    function animateTo(to) {
+      to = Math.max(0, Math.min(STAGES.length - 1, to));
+      if (to === cur && !anim) { settle(to); return; }
+      if (anim) { cancelAnimationFrame(anim.raf); anim = null; }
+      var from = cur, Sf = STAGES[from], St = STAGES[to];
+      applyText(St, to);
+      dtmTag.setAttribute('opacity', St.dtm ? '1' : '0');
+      if (St.dtm) { var ty = mToY(terrainM(0.50)); dtmTag.setAttribute('transform', 'translate(' + (px(0.50) - 75) + ',' + (ty + 62) + ')'); }
+      var zy = mToY(0);
+      zeroBase.setAttribute('opacity', St.zero ? '1' : '0'); zeroBase.setAttribute('y1', zy); zeroBase.setAttribute('y2', zy);
+      zeroTag.setAttribute('opacity', St.zero ? '1' : '0'); zeroTag.setAttribute('transform', 'translate(' + (PLOT.x0 + 14) + ',' + (zy - 30) + ')');
+      OBJ.forEach(function (o) { o.dom.brk.setAttribute('opacity', St.brk ? '1' : '0'); });
+      // the DSM−DTM subtraction (DTM stage 1 ↔ nDSM stage 2) plays slower for emphasis
+      var slow = (Math.min(from, to) === 1 && Math.max(from, to) === 2);
+      var t0 = performance.now(), dur = slow ? 1900 : 850, f0 = Sf.flat, f1 = St.flat, l0 = Sf.lift, l1 = St.lift;
+      function frame(now) {
+        var p = Math.min(1, (now - t0) / dur), e = p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
+        var flat = f0 + (f1 - f0) * e, lift = l0 + (l1 - l0) * e;
+        drawTerrain(flat); terrainFill.setAttribute('fill-opacity', 0.55 + (0.30 - 0.55) * flat);
+        OBJ.forEach(function (o) {
+          var vf = Sf.chip(o), vt = St.chip(o), label;
+          if (vf !== vt) { var nf = parseFloat(vf), nt = parseFloat(vt); label = fmtVal(nf + (nt - nf) * e); } else label = vt;
+          placeObject(o, lift, label);
+        });
+        if (p < 1) { anim = { raf: requestAnimationFrame(frame) }; } else { anim = null; cur = to; settle(to); }
+      }
+      cur = to; anim = { raf: requestAnimationFrame(frame) };
+    }
+
+    function stageFromFragments() {
+      var sec = document.querySelector('section.ndsm-slide');
+      return sec ? sec.querySelectorAll('.ndsm-step.visible').length : 0;
+    }
+    function isPresent() { var sec = document.querySelector('section.present'); return sec && sec.classList.contains('ndsm-slide'); }
+    deck.on('fragmentshown', function (e) { if (e.fragment && e.fragment.closest && e.fragment.closest('.ndsm-slide')) animateTo(stageFromFragments()); });
+    deck.on('fragmenthidden', function (e) { if (e.fragment && e.fragment.closest && e.fragment.closest('.ndsm-slide')) animateTo(stageFromFragments()); });
+    deck.on('slidechanged', function () { if (isPresent()) { if (anim) { cancelAnimationFrame(anim.raf); anim = null; } cur = stageFromFragments(); settle(cur); } });
+
+    settle(0);
+  }
 
   /* ===================== EN / EL language toggle =====================
      A pill button (top-right, left of ☰; or press "l") that flips the deck
@@ -241,6 +486,7 @@
     { s:'D · Data & sensor',       t:'Photogrammetric processing' },
     { s:'D · Data & sensor',       t:'7-band composite production' },
     { s:'D · Data & sensor',       t:'The 7-band composite' },
+    { s:'D · Data & sensor',       t:'nDSM: DSM − DTM (animation)' },
     { s:'E · Dataset & classes',   t:'Seven land-cover classes' },
     { s:'E · Dataset & classes',   t:'Image chips & label masks' },
     { s:'E · Dataset & classes',   t:'Building the training chips' },
