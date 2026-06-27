@@ -1,0 +1,48 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite the MSc thesis below."
+title: >-
+  MSc Thesis Defence — Development of a GIS Application for the Automatic
+  Classification of Multispectral & Thermal UAV Images Using Convolutional
+  Neural Networks
+type: software
+authors:
+  - family-names: Koroniadis
+    given-names: Nikolaos
+    affiliation: "University of the Aegean — Department of Geography"
+abstract: >-
+  Bilingual (EN/EL), offline reveal.js presentation for an MSc thesis comparing
+  a 7-band (multispectral + nDSM + thermal) versus an RGB semantic-segmentation
+  pipeline (DeepLabV3 + PointRend / ResNet-101) on UAV imagery of Pamfila,
+  Lesvos (GSD 4.52 cm). The advantage is shown to be driven by geometry (nDSM)
+  and heat (LWIR) rather than spectrum.
+keywords:
+  - remote sensing
+  - semantic segmentation
+  - convolutional neural networks
+  - UAV
+  - multispectral
+  - thermal
+  - nDSM
+  - DeepLabV3
+  - PointRend
+  - GIS
+license: MIT
+date-released: "2026-06-27"
+repository-code: "https://github.com/Nickkoro21/lesvos-altum-defence"
+url: "https://nickkoro21.github.io/lesvos-altum-defence/"
+preferred-citation:
+  type: thesis
+  title: >-
+    Development of a GIS Application for the Automatic Classification of
+    Multispectral & Thermal UAV Images Using Convolutional Neural Networks
+  authors:
+    - family-names: Koroniadis
+      given-names: Nikolaos
+  year: 2026
+  month: 6
+  institution:
+    name: "University of the Aegean"
+  department: "Department of Geography — MSc Geography & Applied Geoinformatics"
+  thesis-type: "MSc thesis"
+  city: "Mytilene"
+  country: "GR"

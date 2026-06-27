@@ -1,12 +1,25 @@
-# MSc Thesis Defence · 7-Band vs RGB Semantic Segmentation
+<div align="center">
 
-**Development of a GIS Application for the Automatic Classification of Multispectral & Thermal UAV Images Using Convolutional Neural Networks**
+# 🛰️ MSc Thesis Defence — 7-Band vs RGB Semantic Segmentation
 
-An offline, self-contained [reveal.js](https://revealjs.com/) presentation for the MSc thesis defence — *Geography & Applied Geoinformatics*, **University of the Aegean**.
+### Automatic classification of multispectral & thermal UAV imagery with CNNs
 
-### ▶ [**Open the live presentation →**](https://nickkoro21.github.io/lesvos-altum-defence/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![reveal.js](https://img.shields.io/badge/reveal.js-5.x-F2A93B)](https://revealjs.com/)
+[![KaTeX](https://img.shields.io/badge/KaTeX-offline-329932)](https://katex.org/)
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live%20Demo-181717?logo=github)](https://nickkoro21.github.io/lesvos-altum-defence/)
+[![Bilingual EN / ΕΛ](https://img.shields.io/badge/Bilingual-EN%20%2F%20%CE%95%CE%9B-2E86AB)](#controls)
+[![Status](https://img.shields.io/badge/Status-Defence%20Ready-success)](#)
 
-🇬🇧 **EN** / 🇬🇷 **ΕΛ** — fully bilingual, switch language in place on any slide.
+[**▶ Open the presentation**](https://nickkoro21.github.io/lesvos-altum-defence/) ·
+[**📊 Source code**](https://github.com/Nickkoro21/lesvos-altum-defence) ·
+[**🎓 University of the Aegean**](https://www.aegean.gr/)
+
+</div>
+
+---
+
+**Development of a GIS Application for the Automatic Classification of Multispectral & Thermal UAV Images Using Convolutional Neural Networks** — an offline, self-contained [reveal.js](https://revealjs.com/) presentation for the MSc thesis defence, *Geography & Applied Geoinformatics*, **University of the Aegean**. Fully bilingual 🇬🇧 **EN** / 🇬🇷 **ΕΛ**, switchable in place on any slide.
 
 ---
 
@@ -66,4 +79,16 @@ Supervisor: Assist. Prof. Dr. Christos Vasilakos · Mytilene, 2026
 - [Interactive methodology map](https://nickkoro21.github.io/lesvos-altum-segmentation/)
 - [7-Band vs RGB dashboard](https://nickkoro21.github.io/thesis-7band-vs-rgb/)
 - [PostProcessing Toolbox (ArcGIS, MIT)](https://github.com/Nickkoro21/PostProcessing-Toolbox)
+- [Spectral Separability Explorer (JM, sensor-agnostic)](https://github.com/Nickkoro21/jm-separability-toolbox)
 - [Spectral 3D Explorer](https://huggingface.co/spaces/NickKoro21/spectral-3d-explorer)
+
+## Citation
+
+If you refer to this work, please cite the MSc thesis. A machine-readable [`CITATION.cff`](CITATION.cff) is included, so you can use the **“Cite this repository”** button on GitHub.
+
+> Koroniadis, N. (2026). *Development of a GIS Application for the Automatic Classification of Multispectral & Thermal UAV Images Using Convolutional Neural Networks* (MSc thesis). University of the Aegean, Department of Geography, Mytilene.
+
+## License
+
+Released under the [MIT License](LICENSE) — © 2026 Nikolaos Koroniadis.
+Vendored libraries ([reveal.js](https://revealjs.com/), [KaTeX](https://katex.org/)) retain their own MIT licences.
