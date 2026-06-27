@@ -1,0 +1,204 @@
+{
+    "ModelParameters": {
+        "pointrend": true,
+        "keep_dilation": true,
+        "backbone": "resnet101",
+        "backend": "pytorch"
+    },
+    "Framework": "arcgis.learn.models._inferencing",
+    "ModelConfiguration": "_deeplab_infrencing",
+    "InferenceFunction": "[Functions]System\\DeepLearning\\ArcGISLearn\\ArcGISImageClassifier.py",
+    "ModelType": "ImageClassification",
+    "ExtractBands": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+    ],
+    "ignore_mapped_class": [],
+    "SupportsVariableTileSize": true,
+    "Classes": [
+        {
+            "Value": 1,
+            "Name": "Tree",
+            "Color": [
+                12,
+                62,
+                153
+            ]
+        },
+        {
+            "Value": 2,
+            "Name": "Building",
+            "Color": [
+                36,
+                94,
+                13
+            ]
+        },
+        {
+            "Value": 3,
+            "Name": "Road",
+            "Color": [
+                166,
+                31,
+                3
+            ]
+        },
+        {
+            "Value": 4,
+            "Name": "Vehicle",
+            "Color": [
+                28,
+                6,
+                183
+            ]
+        },
+        {
+            "Value": 5,
+            "Name": "Grass",
+            "Color": [
+                18,
+                77,
+                200
+            ]
+        },
+        {
+            "Value": 6,
+            "Name": "Bare Soil",
+            "Color": [
+                67,
+                187,
+                139
+            ]
+        },
+        {
+            "Value": 7,
+            "Name": "Shadow-Noise",
+            "Color": [
+                71,
+                222,
+                179
+            ]
+        }
+    ],
+    "ModelFormat": "NCHW",
+    "MinCellSize": {
+        "x": 0.04517479649407118,
+        "y": 0.04517418945777087,
+        "spatialReference": {
+            "wkid": 32635,
+            "latestWkid": 32635
+        }
+    },
+    "MaxCellSize": {
+        "x": 0.04517479649407118,
+        "y": 0.04517418945777087,
+        "spatialReference": {
+            "wkid": 32635,
+            "latestWkid": 32635
+        }
+    },
+    "ArcGISLearnVersion": "2.4.2",
+    "monitored_valid_loss": 0.2250179946422577,
+    "ModelFile": "deeplab_50_101.pth",
+    "ImageHeight": 512,
+    "ImageWidth": 512,
+    "ImageSpaceUsed": "MAP_SPACE",
+    "LearningRate": "slice('2.3263e-05', '2.3263e-04', None)",
+    "ModelName": "DeepLab",
+    "backend": "pytorch",
+    "accuracy": "9.6824e-01",
+    "resize_to": 512,
+    "IsMultispectral": true,
+    "IsImageNetNormalization": true,
+    "Bands": [
+        "Blue",
+        "Green",
+        "Red",
+        "RE",
+        "NIR",
+        "nDSM",
+        "Thermal"
+    ],
+    "ImageryType": "MultiSpectral",
+    "NormalizationStats": {
+        "band_min_values": [
+            -0.011692119762301445,
+            0.004960234742611647,
+            -0.01753220707178116,
+            -0.01861952617764473,
+            -0.02011963352560997,
+            0.0,
+            41.73632049560547
+        ],
+        "band_max_values": [
+            0.8613086342811584,
+            1.0191290378570557,
+            1.04587721824646,
+            1.1074949502944946,
+            1.1311548948287964,
+            22.379962921142578,
+            61.17081069946289
+        ],
+        "band_mean_values": [
+            0.1292283833026886,
+            0.17270156741142273,
+            0.21513508260250092,
+            0.2554524540901184,
+            0.33774107694625854,
+            1.390620470046997,
+            45.86603546142578
+        ],
+        "band_std_values": [
+            0.0721823200583458,
+            0.08522669970989227,
+            0.11457880586385727,
+            0.10590799152851105,
+            0.12700936198234558,
+            3.440493583679199,
+            4.092947006225586
+        ],
+        "scaled_min_values": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+        ],
+        "scaled_max_values": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+        ],
+        "scaled_mean_values": [
+            0.16141897439956665,
+            0.16539619863033295,
+            0.2187916487455368,
+            0.24337628483772278,
+            0.3108360171318054,
+            0.062136825174093246,
+            0.21249401569366455
+        ],
+        "scaled_std_values": [
+            0.09016282111406326,
+            0.08162156492471695,
+            0.11652626097202301,
+            0.10090133547782898,
+            0.11689157038927078,
+            0.15373089909553528,
+            0.018962327390909195
+        ]
+    },
+    "DoNormalize": true,
+    "per_class_metrics": "{\"NoData\":{\"precision\":0.9520933628,\"recall\":0.8707574606,\"f1\":0.9096107483},\"Tree\":{\"precision\":0.9644349217,\"recall\":0.9395940304,\"f1\":0.9518524408},\"Building\":{\"precision\":0.9659212828,\"recall\":0.9889314771,\"f1\":0.9772909284},\"Road\":{\"precision\":0.9768649936,\"recall\":0.9708641768,\"f1\":0.9738553762},\"Vehicle\":{\"precision\":0.8774061203,\"recall\":0.9515950084,\"f1\":0.9129959345},\"Grass\":{\"precision\":0.9606196284,\"recall\":0.9487071633,\"f1\":0.9546262622},\"Bare Soil\":{\"precision\":0.9729995131,\"recall\":0.9872567058,\"f1\":0.980076313},\"Shadow-Noise\":{\"precision\":0.9508736134,\"recall\":0.9098268151,\"f1\":0.9298974872}}"
+}

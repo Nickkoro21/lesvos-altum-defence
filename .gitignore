@@ -1,0 +1,9 @@
+# Never publish working artefacts or the thesis source
+node_modules/
+deck/node_modules/
+_shots/
+deck/_shots/
+*.docx
+*.pdf
+.DS_Store
+Thumbs.db

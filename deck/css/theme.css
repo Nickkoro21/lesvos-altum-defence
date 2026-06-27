@@ -1,0 +1,536 @@
+/* =====================================================================
+   MSc Defence deck — canonical theme (overrides reveal white base)
+   7-Band vs RGB urban land-cover segmentation
+   Single source of truth for colour + typography + table component.
+   ===================================================================== */
+
+:root {
+  /* --- CANONICAL class palette (locked) --- */
+  --c-tree:      #3C8C40;
+  --c-building:  #D72121;
+  --c-road:      #343434;
+  --c-vehicle:   #EBC84E;
+  --c-grass:     #8FC04A;
+  --c-baresoil:  #C3A46F;
+  --c-shadow:    #828282;
+
+  /* --- model comparison (locked) --- */
+  --c-7band: #2E86AB;
+  --c-rgb:   #E63946;
+
+  /* --- neutrals / system --- */
+  --ink:        #1A1D21;
+  --ink-soft:   #4A5158;
+  --ink-faint:  #8A9099;
+  --paper:      #FFFFFF;
+  --paper-2:    #F4F6F8;
+  --line:       #D9DEE3;
+  --ok:         #2E8B57;   /* significant / win */
+  --no:         #B0B6BD;   /* not significant */
+  --warn:       #E63946;   /* would-be false positive */
+
+  /* tints for table columns */
+  --tint-7band: rgba(46,134,171,0.10);
+  --tint-rgb:   rgba(230,57,70,0.08);
+
+  /* reveal overrides */
+  --r-background-color: var(--paper);
+  --r-main-color: var(--ink);
+  --r-heading-color: var(--ink);
+  --r-link-color: var(--c-7band);
+  --r-link-color-hover: #1f6e8f;
+  --r-selection-background-color: rgba(46,134,171,0.25);
+  --r-main-font: "Segoe UI", system-ui, "Helvetica Neue", Arial, sans-serif;
+  --r-heading-font: "Segoe UI", system-ui, "Helvetica Neue", Arial, sans-serif;
+  --r-main-font-size: 30px;
+  --r-heading-font-weight: 700;
+  --r-heading1-size: 1.7em;
+  --r-heading2-size: 1.35em;
+  --r-heading3-size: 1.1em;
+}
+
+.reveal { font-feature-settings: "tnum" 1, "lnum" 1; }
+
+.reveal .slides { text-align: left; }
+/* full-height slides so bottom-pinned chrome (logos/footnote) sits at the
+   slide edge, not at the end of content */
+.reveal .slides > section,
+.reveal .slides > section > section {
+  height: 100%; box-sizing: border-box;
+  padding: 44px 60px 58px 60px;
+  display: flex; flex-direction: column; justify-content: flex-start;
+}
+.reveal section.cover { justify-content: center; }
+/* reserve a top band on body slides for the Department logo (top-left) */
+.reveal .slides > section:not(.cover) { padding-top: 50px; }
+
+/* conclusion-style slide title (a sentence, not a label) */
+.reveal h1, .reveal h2, .reveal h3 { text-transform: none; letter-spacing: -0.01em; line-height: 1.12; margin: 0 0 0.5em 0; }
+.reveal h2 { color: var(--ink); }
+.reveal .slide-title {
+  font-size: 1.18em; font-weight: 700; line-height: 1.15;
+  color: var(--ink); margin: 0 0 0.5em 0; max-width: 46ch;
+  text-wrap: balance;
+}
+.reveal .slide-title em { font-style: normal; color: var(--c-7band); }
+.reveal .kicker {
+  font-size: 0.5em; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--c-7band); margin: 0 0 0.25em 0;
+}
+
+.reveal p, .reveal li { line-height: 1.35; text-wrap: pretty; }
+.reveal strong { font-weight: 700; }
+.reveal .muted { color: var(--ink-soft); }
+.reveal .small { font-size: 0.72em; }
+
+/* =========================== TABLE COMPONENT =========================== */
+.reveal table.tbl {
+  border-collapse: collapse; width: 100%; margin: 0.2em 0;
+  font-size: 0.66em; line-height: 1.2; background: var(--paper);
+  border: 1px solid var(--line);
+}
+.reveal table.tbl th, .reveal table.tbl td {
+  padding: 0.34em 0.6em; border: 1px solid var(--line);
+  text-align: left; vertical-align: middle;
+}
+.reveal table.tbl thead th {
+  font-weight: 700; color: var(--ink); background: var(--paper-2);
+  border-bottom: 2px solid var(--ink); white-space: nowrap;
+}
+.reveal table.tbl tbody tr:last-child td { border-bottom: 2px solid var(--ink); }
+.reveal table.tbl .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.reveal table.tbl .center { text-align: center; }
+
+/* model-comparison column tinting */
+.reveal table.tbl .col-7band { background: var(--tint-7band); }
+.reveal table.tbl .col-rgb   { background: var(--tint-rgb); }
+.reveal table.tbl thead .col-7band { color: var(--c-7band); border-bottom-color: var(--c-7band); }
+.reveal table.tbl thead .col-rgb   { color: var(--c-rgb);   border-bottom-color: var(--c-rgb); }
+
+/* class swatch chips */
+.reveal .swatch { display: inline-block; width: 0.8em; height: 0.8em; border-radius: 2px; margin-right: 0.45em; vertical-align: -0.04em; box-shadow: 0 0 0 1px rgba(0,0,0,0.12) inset; }
+.sw-tree{background:var(--c-tree)} .sw-building{background:var(--c-building)}
+.sw-road{background:var(--c-road)} .sw-vehicle{background:var(--c-vehicle)}
+.sw-grass{background:var(--c-grass)} .sw-baresoil{background:var(--c-baresoil)}
+.sw-shadow{background:var(--c-shadow)}
+
+/* significance badges */
+.reveal .sig  { font-weight: 700; color: var(--ok); white-space: nowrap; }
+.reveal .ns   { font-weight: 700; color: var(--no); white-space: nowrap; }
+.reveal .fp   { font-weight: 700; color: var(--warn); white-space: nowrap; }
+
+/* row emphasis for the Holm "flip" */
+.reveal table.tbl tr.flip td { background: rgba(230,57,70,0.13); transition: background .45s ease; }
+.reveal table.tbl tr.keep td { background: rgba(46,139,87,0.11); transition: background .45s ease; }
+
+/* --- Holm step-down staged reveal --- */
+/* the correction columns (×mult, p_Holm) are hidden until "Apply" fragment */
+.reveal #holm-table .holm-col { opacity: 0; transition: opacity .5s ease; }
+.reveal #holm-table.show-holm .holm-col { opacity: 1; }
+/* verdict cell flips raw -> corrected when Holm applied */
+.reveal #holm-table .v-holm { display: none; }
+.reveal #holm-table.show-holm .v-raw { display: none; }
+.reveal #holm-table.show-holm .v-holm { display: inline; }
+/* the "apply" trigger chip */
+.reveal .apply-chip {
+  display: inline-block; font-size: 0.62em; font-weight: 700;
+  padding: 0.4em 0.9em; border-radius: 999px; margin: 0.35em 0 0.15em;
+  background: var(--c-7band); color: #fff; box-shadow: 0 2px 8px rgba(46,134,171,0.35);
+}
+
+/* 2x2 contingency mini-table */
+.reveal table.cont { border-collapse: collapse; font-size: 0.72em; margin: 0.1em 0; }
+.reveal table.cont th, .reveal table.cont td { border: 1px solid var(--line); padding: 0.5em 0.8em; text-align: center; }
+.reveal table.cont thead th { background: var(--paper-2); }
+.reveal table.cont .cell-b { background: var(--tint-7band); font-weight: 700; }
+.reveal table.cont .cell-c { background: var(--tint-rgb); font-weight: 700; }
+.reveal table.cont .rowhdr { background: var(--paper-2); font-weight: 700; text-align: right; }
+/* McNemar 2x2 with agreement/disagreement colour scale */
+.reveal table.cont.mcnemar td { font-size: 1.05em; padding: 0.55em 0.9em; }
+.reveal table.cont.mcnemar .mc-a { background: rgba(46,139,87,0.16); }
+.reveal table.cont.mcnemar .mc-d { background: var(--paper-2); }
+.reveal table.cont.mcnemar .mc-b { background: rgba(46,134,171,0.24); }
+.reveal table.cont.mcnemar .mc-c { background: rgba(230,57,70,0.18); }
+.reveal table.cont.mcnemar .mc-lbl { display: block; font-size: 0.58em; font-weight: 400; color: var(--ink-soft); margin-top: 1px; }
+.reveal .mc-key { display: inline-block; width: 0.75em; height: 0.75em; border-radius: 2px; vertical-align: -0.05em; margin-right: 0.25em; }
+.reveal .mc-key.agree { background: rgba(46,139,87,0.45); }
+.reveal .mc-key.dis { background: rgba(46,134,171,0.55); }
+
+/* key/value callout */
+.reveal .callout {
+  border-left: 4px solid var(--c-7band); background: var(--paper-2);
+  padding: 0.5em 0.8em; border-radius: 0 6px 6px 0; font-size: 0.8em;
+}
+.reveal .callout.warn { border-left-color: var(--warn); }
+
+/* two-column layout helper */
+.reveal .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1em; align-items: start; }
+.reveal .cols.s-60-40 { grid-template-columns: 3fr 2fr; }
+.reveal .cols.s-40-60 { grid-template-columns: 2fr 3fr; }
+.reveal .cols.s-55-45 { grid-template-columns: 11fr 9fr; }
+.reveal .cols.s-45-55 { grid-template-columns: 9fr 11fr; }
+.reveal .cols.s-65-35 { grid-template-columns: 13fr 7fr; }
+.reveal .cols.s-50-50 { grid-template-columns: 1fr 1fr; }
+
+/* KaTeX sizing */
+.reveal .katex { font-size: 1.0em; }
+.reveal .formula { font-size: 0.9em; margin: 0.3em 0; color: var(--ink); }
+
+/* =========================== CHROME (logos / footnote / page) =========================== */
+/* split "letterhead": Department logo top-left (aligned with the text column),
+   RSGIS lab logo bottom-right. Both ~42px. */
+.reveal .logo-bar { opacity: 0.95; }
+.reveal .logo-bar img { position: absolute; width: auto; z-index: 5; margin: 0; border: none; box-shadow: none; }
+.reveal .logo-bar img:first-child  { top: 6px;     left: 60px;  height: 38px; }  /* Department */
+.reveal .logo-bar img:last-child   { bottom: 16px; right: 24px; height: 42px; }  /* RSGIS lab */
+/* poster/layout slides embed their own Dept+RSGIS logos → hide the deck logo-bar
+   to avoid the logo-on-logo collision */
+.reveal section:has(.bigfig) .logo-bar { display: none; }
+
+.reveal .slide-fn {
+  position: absolute; bottom: 14px; left: 18px; right: 208px;
+  font-size: 12px; line-height: 1.25; color: var(--ink-faint);
+  font-weight: 400; z-index: 5;
+}
+.reveal .slide-fn::before { content: ""; }
+
+/* slide number */
+.reveal .slide-number { background: transparent; color: var(--ink-faint); font-size: 14px; right: 8px; bottom: 8px; }
+
+/* ============================ COVER / CLOSING ============================ */
+.reveal section.cover { text-align: left; }
+.reveal section.cover .cover-logo { height: 84px; margin-bottom: 0.35em; }
+.reveal section.cover h1 { font-size: 1.3em; line-height: 1.14; margin-bottom: 0.35em; max-width: 32ch; }
+.reveal section.cover .subtitle { font-size: 0.82em; color: var(--ink-soft); font-weight: 600; margin-bottom: 0.7em; max-width: 40ch; }
+.reveal section.cover .one-liner { font-size: 0.78em; color: var(--ink); border-left: 4px solid var(--c-7band); padding-left: 0.7em; max-width: 40ch; margin-bottom: 0.9em; }
+.reveal section.cover .meta { font-size: 0.62em; color: var(--ink-soft); line-height: 1.5; }
+.reveal section.cover .meta b { color: var(--ink); }
+
+/* roadmap chips */
+.reveal .roadmap { display: flex; flex-wrap: wrap; gap: 0.5em; margin-top: 0.4em; }
+.reveal .roadmap .chip { font-size: 0.6em; font-weight: 700; padding: 0.4em 0.85em; border-radius: 999px; background: #2E8B57; border: 1px solid #2E8B57; color: #fff; }
+/* roadmap chips auto-reveal one-by-one (1.5 s apart) on a single click — see deck.js */
+.reveal .roadmap .rm-chip { opacity: 0; transform: translateY(7px); transition: opacity .45s ease, transform .45s ease; }
+.reveal .roadmap .rm-chip.shown { opacity: 1; transform: none; }
+.reveal .roadmap-trigger { display: inline; }
+
+/* emphasis number */
+.reveal .bignum { font-size: 1.4em; font-weight: 800; font-variant-numeric: tabular-nums; }
+.reveal .bignum.b7 { color: var(--c-7band); }
+.reveal .bignum.brgb { color: var(--c-rgb); }
+
+/* lead paragraph */
+.reveal .lead { font-size: 0.92em; color: var(--ink); max-width: 54ch; line-height: 1.3; }
+
+/* ============================ CV history timeline ============================ */
+/* brand-blue accents only (class hues reserved for the 7 classes) */
+.reveal .timeline { position: relative; margin: 1.4em 0 0.4em; }
+.reveal .timeline .axis { position: absolute; top: 8px; left: 2%; right: 2%; height: 3px; background: var(--line); z-index: 1; }
+.reveal .timeline .stops { display: flex; justify-content: space-between; position: relative; z-index: 2; }
+.reveal .timeline .stop { width: 18.5%; text-align: center; }
+.reveal .timeline .dot { width: 18px; height: 18px; border-radius: 50%; background: var(--c-7band); margin: 0 auto 0.55em; box-shadow: 0 0 0 5px rgba(46,134,171,0.16); }
+.reveal .timeline .stop.peak .dot { width: 24px; height: 24px; margin-top: -3px; box-shadow: 0 0 0 6px rgba(46,134,171,0.22); }
+.reveal .timeline .yr { font-weight: 800; font-size: 0.74em; color: var(--c-7band); }
+.reveal .timeline .ev { font-size: 0.56em; color: var(--ink-soft); line-height: 1.25; margin-top: 0.25em; }
+.reveal .timeline .ev b { color: var(--ink); }
+
+/* ============================ 4+1 vision tasks ============================ */
+.reveal .task-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.6em; margin-top: 0.7em; }
+.reveal .task-card { border: 1px solid var(--line); border-radius: 9px; padding: 0.7em 0.6em; background: var(--paper); }
+.reveal .task-card .tc-ico { font-size: 1.1em; }
+.reveal .task-card .tc-title { font-weight: 700; font-size: 0.6em; margin-top: 0.25em; line-height: 1.15; }
+.reveal .task-card .tc-desc { font-size: 0.48em; color: var(--ink-soft); line-height: 1.3; margin-top: 0.35em; }
+.reveal .task-card.chosen { border-color: var(--c-7band); border-width: 2px; background: var(--tint-7band); box-shadow: 0 6px 16px rgba(46,134,171,0.18); }
+.reveal .task-card .tc-tag { display: inline-block; font-size: 0.44em; font-weight: 700; color: #fff; background: var(--c-7band); border-radius: 999px; padding: 0.18em 0.55em; margin-top: 0.4em; letter-spacing: 0.04em; }
+
+/* 4 vision-task example images (real annotated aerial scenes) */
+.reveal .task-imgs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.7em; margin-top: 0.5em; }
+.reveal .task-img-card { border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--paper); }
+.reveal .task-img-card.chosen { border: 2px solid var(--c-7band); box-shadow: 0 6px 16px rgba(46,134,171,0.18); }
+.reveal .task-img-card img { width: 100%; height: 188px; object-fit: cover; object-position: center; display: block; background: var(--paper-2); }
+
+/* big centered single diagram (no logo-hiding, unlike .bigfig) */
+.reveal .centerfig { text-align: center; margin-top: 0.3em; }
+.reveal .centerfig img { display: block; margin: 0 auto; width: auto; max-width: 100%; max-height: 470px; border-radius: 6px; border: 1px solid var(--line); }
+.reveal .centerfig .figcap { font-size: 0.58em; color: var(--ink-faint); margin-top: 0.4em; line-height: 1.25; text-align: center; }
+.reveal .task-img-card .ti-body { padding: 0.5em 0.6em 0.65em; }
+.reveal .task-img-card .ti-title { font-weight: 700; font-size: 0.6em; line-height: 1.1; }
+.reveal .task-img-card .ti-desc { font-size: 0.5em; color: var(--ink-soft); line-height: 1.3; margin-top: 0.25em; }
+.reveal .task-img-card .ti-tag { display: inline-block; font-size: 0.46em; font-weight: 700; color: #fff; background: var(--c-7band); border-radius: 999px; padding: 0.18em 0.55em; margin-top: 0.35em; letter-spacing: 0.04em; }
+
+/* ============================ challenge list ============================ */
+.reveal ul.chall { list-style: none; margin: 0; padding: 0; }
+.reveal ul.chall li { font-size: 0.7em; line-height: 1.3; margin-bottom: 0.5em; padding-left: 1.4em; position: relative; }
+.reveal ul.chall li::before { content: "▸"; position: absolute; left: 0; color: var(--c-7band); font-weight: 700; }
+.reveal ul.chall li b { color: var(--ink); }
+
+/* figure framing */
+.reveal .fig { background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 6px; }
+.reveal .fig img { display: block; width: 100%; height: auto; max-height: 420px; object-fit: contain; border-radius: 4px; }
+.reveal .figcap { font-size: 0.58em; color: var(--ink-faint); margin-top: 0.35em; line-height: 1.25; }
+
+/* chosen-row marker for tables */
+.reveal table.tbl tr.chosen td { background: rgba(46,134,171,0.12); font-weight: 600; }
+.reveal table.tbl tr.chosen td:first-child { box-shadow: inset 3px 0 0 var(--c-7band); }
+
+/* ============================ model pipeline (stages) ============================ */
+.reveal .pipeline { display: flex; align-items: stretch; margin-top: 0.9em; }
+.reveal .pipeline .stage { flex: 1; border: 1px solid var(--line); border-radius: 10px; padding: 0.85em 0.7em; background: var(--paper); text-align: center; }
+.reveal .pipeline .stage.lead { border-color: var(--c-7band); border-width: 2px; background: var(--tint-7band); }
+.reveal .pipeline .stage .st-step { font-size: 0.5em; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--c-7band); }
+.reveal .pipeline .stage .st-name { font-weight: 700; font-size: 0.8em; margin: 0.3em 0; line-height: 1.1; }
+.reveal .pipeline .stage .st-desc { font-size: 0.56em; color: var(--ink-soft); line-height: 1.3; }
+.reveal .pipeline .arrow { display: flex; align-items: center; padding: 0 0.45em; color: var(--c-7band); font-size: 1.4em; font-weight: 700; }
+
+/* ============================ metadata namespace list ============================ */
+.reveal .ns-list { margin-top: 0.7em; }
+.reveal .ns-row { display: flex; align-items: baseline; gap: 0.9em; padding: 0.5em 0; border-bottom: 1px solid var(--line); }
+.reveal .ns-row .ns-tag { flex: 0 0 10.5em; font-weight: 700; font-size: 0.6em; color: #fff; background: var(--c-7band); border-radius: 5px; padding: 0.3em 0.6em; text-align: center; font-family: ui-monospace, "Consolas", monospace; }
+.reveal .ns-row .ns-desc { font-size: 0.72em; color: var(--ink-soft); line-height: 1.3; }
+.reveal .ns-row .ns-desc b { color: var(--ink); }
+
+/* ============================ big constrained figure (never overflow) ============================ */
+.reveal .bigfig { text-align: center; margin-top: 0.2em; }
+.reveal .bigfig img { width: 100%; max-height: 470px; object-fit: contain; border-radius: 6px; border: 1px solid var(--line); box-sizing: border-box; }
+.reveal .bigfig .figcap { text-align: left; }
+
+/* confusion-matrix 7-Band / RGB toggle */
+.reveal .cm-switch { display: inline-flex; border: 1.5px solid var(--line); border-radius: 8px; overflow: hidden; margin-bottom: 0.5em; }
+.reveal .cm-btn { font-family: inherit; font-size: 0.62em; font-weight: 700; padding: 0.45em 1.1em; border: none; background: var(--paper); color: var(--ink-soft); cursor: pointer; }
+.reveal .cm-btn + .cm-btn { border-left: 1px solid var(--line); }
+.reveal .cm-btn.b7.active   { background: var(--c-7band); color: #fff; }
+.reveal .cm-btn.brgb.active { background: var(--c-rgb); color: #fff; }
+.reveal .cm-stage { text-align: center; }
+.reveal .cm-img { width: 100%; max-height: 432px; object-fit: contain; display: block; }
+.reveal .cm-img[hidden] { display: none; }
+.reveal .cm-btn.bdiff.active { background: var(--ok); color: #fff; }
+/* confusion matrices rebuilt as real tables (recall %, n=300/class) */
+/* Confusion matrices as heat-maps (cell fills painted by paintHeatmap() in
+   deck.js). White 2px gridlines give the reference "tile" look; cells sit on a
+   transparent background and the JS sets their per-value fill. */
+.reveal .cm-tbl { border-collapse: collapse; width: 100%; font-size: 0.62em; margin-top: 0.1em; }
+.reveal .cm-tbl th, .reveal .cm-tbl td { border: 2px solid #fff; padding: 0.26em 0.2em; text-align: center; font-variant-numeric: tabular-nums; background-clip: padding-box; }
+.reveal .cm-tbl thead th { background: var(--paper-2); font-weight: 700; }
+.reveal .cm-tbl thead th .swatch { margin-right: 0.15em; }
+.reveal .cm-tbl .rowh { background: var(--paper-2); font-weight: 700; text-align: left; white-space: nowrap; }
+.reveal .cm-tbl .cm-corner { font-size: 0.82em; color: var(--ink-soft); font-weight: 600; }
+.reveal .cm-tbl td.z    { color: var(--ink-faint); }
+.reveal .cm-tbl .cm-n   { display: block; font-size: 0.7em; font-weight: 400; line-height: 1.05; opacity: 0.85; }
+.reveal .cm-tbl .cm-n::before { content: "("; }
+.reveal .cm-tbl .cm-n::after  { content: ")"; }
+.reveal .cm-tbl[hidden] { display: none; }
+.reveal #postproc-svg, .reveal .svgfig img { max-width: 100%; width: auto; height: auto; max-height: 540px; display: block; margin: 0 auto; }
+
+/* deliverables list */
+.reveal ul.deliv { list-style: none; margin: 0.3em 0 0; padding: 0; }
+.reveal ul.deliv li { font-size: 0.7em; padding: 0.3em 0; border-bottom: 1px solid var(--line); }
+.reveal ul.deliv li .d-name { font-weight: 700; color: var(--ink); }
+.reveal ul.deliv li .d-url { font-family: ui-monospace, "Consolas", monospace; font-size: 0.84em; color: var(--ink-soft); overflow-wrap: anywhere; word-break: normal; }
+
+/* RQ conclusions */
+.reveal .rq { font-size: 0.86em; margin-bottom: 0.55em; line-height: 1.35; }
+.reveal .rq .rq-q { font-weight: 700; color: var(--c-7band); }
+
+/* demo card */
+.reveal .demo-card { border: 2px solid var(--c-7band); border-radius: 10px; padding: 0.85em 1.1em; background: var(--tint-7band); }
+.reveal .demo-badge { display: inline-block; font-size: 0.58em; font-weight: 700; letter-spacing: 0.1em; background: var(--c-7band); color: #fff; padding: 0.2em 0.65em; border-radius: 999px; margin-bottom: 0.4em; }
+.reveal .stat-line { font-size: 0.62em; color: var(--ink-soft); margin-top: 0.4em; }
+.reveal .stat-line b { color: var(--ink); }
+
+/* ============================ link / demo card ============================ */
+.reveal .linkcard { border: 1.5px solid var(--c-7band); border-radius: 10px; padding: 0.8em 1em; background: var(--tint-7band); display: flex; align-items: center; gap: 1em; }
+.reveal .linkcard .lc-body { flex: 1; }
+.reveal .linkcard .lc-kind { font-size: 0.5em; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--c-7band); }
+.reveal .linkcard .lc-name { font-weight: 700; font-size: 0.82em; color: var(--ink); margin: 0.1em 0; }
+.reveal .linkcard .lc-url { font-size: 0.6em; color: var(--ink-soft); word-break: break-all; font-family: ui-monospace, "Consolas", monospace; }
+.reveal .linkcard .lc-note { font-size: 0.58em; color: var(--ink-faint); margin-top: 0.25em; }
+.reveal .linkcard .lc-qr { width: 78px; height: 78px; flex: 0 0 78px; }
+
+/* ============================ anatomy (H3) channel badges ============================ */
+.reveal .chan { display: inline-block; font-size: 0.82em; font-weight: 700; padding: 0.04em 0.5em; border-radius: 5px; background: var(--tint-7band); color: var(--c-7band); margin: 0 0.12em; white-space: nowrap; }
+.reveal .anat-col { border: 1px solid var(--line); border-radius: 9px; padding: 0.7em 0.8em; }
+.reveal .anat-col.yes { border-color: var(--ok); background: rgba(46,139,87,0.06); }
+.reveal .anat-col h3 { font-size: 0.72em; margin: 0 0 0.5em; }
+.reveal .anat-col h3 .yes-h { color: var(--ok); } .reveal .anat-col h3 .no-h { color: var(--ink-faint); }
+.reveal .anat-row { font-size: 0.7em; line-height: 1.38; margin-bottom: 0.45em; }
+.reveal table.tbl td.delta { color: var(--ok); font-weight: 700; }
+
+/* ============================ paired-bootstrap animation ============================ */
+.reveal .boot { display: grid; grid-template-columns: 0.7fr 0.45fr 2.1fr; gap: 0.8em; align-items: center; margin-top: 0.5em; }
+.reveal .reservoir { border: 2px solid var(--c-7band); border-radius: 10px; padding: 0.55em 0.6em; background: var(--tint-7band); }
+.reveal .reservoir .rv-title { font-size: 0.56em; font-weight: 700; color: var(--c-7band); margin-bottom: 0.4em; line-height: 1.2; }
+.reveal .reservoir .dots { display: grid; grid-template-columns: repeat(21, 1fr); gap: 2.5px; }
+.reveal .reservoir .dots i { width: 5px; height: 5px; border-radius: 50%; background: var(--ink-faint); display: block; }
+@keyframes dotBlink { 0%, 100% { opacity: 0.22; } 50% { opacity: 1; background: var(--c-7band); } }
+.reveal .reservoir.sampling .dots i { animation: dotBlink 0.5s ease-in-out infinite; }
+.reveal .reservoir .rv-note { font-size: 0.5em; color: var(--ink-soft); margin-top: 0.4em; }
+.reveal .boot-mid { text-align: center; }
+.reveal .boot-mid .arrow-lbl { font-size: 0.56em; color: var(--ink-soft); line-height: 1.25; }
+.reveal .boot-mid .big-arrow { font-size: 1.6em; color: var(--c-7band); line-height: 1; margin: 0.1em 0; }
+.reveal .boot-counter { font-size: 0.66em; font-weight: 700; font-variant-numeric: tabular-nums; margin-top: 0.3em; }
+.reveal .boot-counter b { color: var(--c-7band); }
+.reveal .boot-hist-wrap .bh-title { font-size: 0.56em; color: var(--ink-soft); font-weight: 700; margin-bottom: 0.15em; }
+.reveal #boot-hist { width: 100%; height: auto; }
+.reveal .boot-ci-tbl { font-size: 0.6em; }
+.reveal .boot { margin-top: 0.1em; }
+.reveal #boot-hist { max-height: 172px; }
+/* compact dense statistical tables so trailing callouts clear the footnote */
+.reveal #holm-table { font-size: 0.62em; }
+
+/* separates / overlaps insight list */
+.reveal ul.sep-list { list-style: none; margin: 0.4em 0 0; padding: 0; }
+.reveal ul.sep-list li { font-size: 0.68em; line-height: 1.3; margin-bottom: 0.45em; padding-left: 1.5em; position: relative; }
+.reveal ul.sep-list li .mk { position: absolute; left: 0; font-weight: 800; }
+.reveal ul.sep-list li b { color: var(--ink); }
+
+/* web/demo reference box (link + fallback) */
+.reveal .link-ref { border: 1px dashed var(--c-7band); border-radius: 8px; padding: 0.6em 0.8em; background: var(--tint-7band); }
+.reveal .link-ref .lr-title { font-weight: 700; font-size: 0.74em; color: var(--c-7band); }
+.reveal .link-ref .lr-url { font-size: 0.58em; color: var(--ink-soft); font-family: ui-monospace, "Consolas", monospace; word-break: break-all; margin-top: 0.15em; }
+.reveal .link-ref .lr-fallback { font-size: 0.56em; color: var(--ink-faint); margin-top: 0.25em; }
+
+/* clickable live-link button */
+.reveal a.btn-link { display: inline-flex; align-items: center; gap: 0.45em; font-size: 0.62em;
+  font-weight: 700; text-decoration: none; color: #fff; background: var(--c-7band);
+  padding: 0.55em 1em; border-radius: 8px; box-shadow: 0 2px 8px rgba(46,134,171,0.3); margin-top: 0.45em; }
+.reveal a.btn-link:hover { background: #1f6e8f; }
+.reveal a.btn-link .btn-ico { font-size: 1.05em; line-height: 1; }
+.reveal a.d-url { color: var(--ink-soft); text-decoration: none; }
+.reveal a.d-url:hover { color: var(--c-7band); text-decoration: underline; }
+
+/* minimal "LIVE DEMO" stage */
+.reveal .demo-stage { flex: 1; display: flex; flex-direction: column; align-items: center;
+  justify-content: center; text-align: center; gap: 0.35em; }
+.reveal .demo-frame { border: 3px solid var(--c-7band); border-radius: 18px; padding: 1.3em 2.6em 1.5em; background: var(--tint-7band); box-shadow: 0 10px 30px rgba(46,134,171,0.18); }
+.reveal .demo-big { font-size: 2.6em; font-weight: 800; letter-spacing: 0.02em; color: var(--c-7band); }
+.reveal .demo-sub { font-size: 0.95em; color: var(--ink-soft); font-weight: 600; margin-top: 0.2em; }
+.reveal .phase-list li { font-size: 0.72em; }
+
+/* numbered steps */
+.reveal ol.steps { list-style: none; counter-reset: s; margin: 0.5em 0 0; padding: 0; }
+.reveal ol.steps li { counter-increment: s; position: relative; padding-left: 2.2em; margin-bottom: 0.55em; font-size: 0.68em; line-height: 1.3; }
+.reveal ol.steps li::before { content: counter(s); position: absolute; left: 0; top: 0.05em; width: 1.5em; height: 1.5em; line-height: 1.5em; text-align: center; background: var(--c-7band); color: #fff; border-radius: 50%; font-weight: 700; font-size: 0.82em; }
+.reveal ol.steps li b { color: var(--ink); }
+.reveal ol.steps li .rule { color: var(--c-7band); font-weight: 700; }
+
+/* class legend (class hues legitimately denote classes here) */
+.reveal .legend .lg-group { font-size: 0.55em; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint); margin: 0.5em 0 0.25em; }
+.reveal .legend .lg-item { font-size: 0.72em; line-height: 1.5; }
+.reveal .legend .lg-item .muted2 { color: var(--ink-soft); font-size: 0.92em; }
+
+/* two big stats */
+.reveal .stat-pair { display: flex; gap: 1.6em; margin: 0.4em 0; }
+.reveal .stat-pair .stat .v { font-size: 1.5em; font-weight: 800; font-variant-numeric: tabular-nums; line-height: 1; }
+.reveal .stat-pair .stat .l { font-size: 0.6em; color: var(--ink-soft); margin-top: 0.25em; }
+
+/* class-distribution mini-bar list */
+.reveal .dist-list { display: flex; flex-direction: column; gap: 0.34em; margin-top: 0.1em; }
+.reveal .dist-row { display: grid; grid-template-columns: 0.85em 6.4em 1fr 2.6em; align-items: center; gap: 0.5em; font-size: 0.62em; }
+.reveal .dist-row .dist-name { font-weight: 600; color: var(--ink); white-space: nowrap; }
+.reveal .dist-row .dist-bar { height: 0.7em; background: var(--paper-2); border-radius: 3px; overflow: hidden; }
+.reveal .dist-row .dist-bar i { display: block; height: 100%; border-radius: 3px; }
+.reveal .dist-row .dist-pct { font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; text-align: right; }
+
+/* key specs inline list */
+.reveal .specs { list-style: none; margin: 0.3em 0 0; padding: 0; }
+.reveal .specs li { font-size: 0.72em; line-height: 1.35; padding: 0.18em 0; color: var(--ink); }
+.reveal .specs li .k { color: var(--ink-soft); }
+
+/* ============================ glossary cards ============================ */
+.reveal .gloss-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.6em; margin-top: 0.7em; }
+.reveal .gloss-card { border: 1px solid var(--line); border-left: 3px solid var(--c-7band); border-radius: 6px; padding: 0.55em 0.7em; background: var(--paper); }
+.reveal .gloss-card .g-term { font-weight: 700; font-size: 0.66em; color: var(--ink); }
+.reveal .gloss-card .g-def { font-size: 0.55em; color: var(--ink-soft); line-height: 1.3; margin-top: 0.2em; }
+.reveal .gloss-card .g-eq { text-align: center; margin: 0.3em 0 0.28em; color: var(--ink); min-height: 1.3em; line-height: 1.05; overflow-x: auto; }
+.reveal .gloss-card .g-eq .katex { font-size: 0.78em; }
+
+/* M1–M4 method cards (no diagram) */
+.reveal .method-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.8em; margin-top: 0.8em; }
+.reveal .method-card { border: 1px solid var(--line); border-radius: 10px; padding: 0.9em 0.8em; background: var(--paper); }
+.reveal .method-card.lead { border: 2px solid var(--c-7band); background: var(--tint-7band); box-shadow: 0 6px 16px rgba(46,134,171,0.18); }
+.reveal .method-card .m-tag { font-size: 0.72em; font-weight: 800; color: var(--c-7band); letter-spacing: 0.05em; }
+.reveal .method-card .m-name { font-weight: 700; font-size: 0.74em; margin: 0.2em 0; }
+.reveal .method-card .m-desc { font-size: 0.56em; color: var(--ink-soft); line-height: 1.3; }
+
+/* ============================ TOC / navigation overlay ============================ */
+/* on-demand menu; injected by deck.js. Lives outside .reveal so it is not scaled. */
+#navToggle {
+  position: fixed; top: 14px; right: 16px; z-index: 60;
+  width: 40px; height: 40px; border-radius: 10px;
+  border: 1px solid var(--line); background: rgba(255,255,255,0.72);
+  color: var(--ink-soft); font-size: 19px; line-height: 1; cursor: pointer;
+  opacity: 0.42; transition: opacity .18s ease, background .18s ease, color .18s ease;
+  -webkit-backdrop-filter: blur(2px); backdrop-filter: blur(2px);
+  display: flex; align-items: center; justify-content: center;
+}
+#navToggle:hover, #navToggle:focus-visible { opacity: 1; background: #fff; color: var(--c-7band); outline: none; }
+
+/* ===== EN/EL language toggle (button injected by deck.js) =====
+   English is the default. Any element marked .lang-el is hidden until the deck
+   is switched to Greek (body.lang-el); its .lang-en sibling is then hidden.
+   Content with NO lang class stays visible in both languages (graceful
+   fallback for slides not yet translated). */
+body:not(.lang-el) .lang-el { display: none; }
+body.lang-el .lang-en { display: none; }
+
+#langToggle {
+  position: fixed; top: 14px; right: 64px; z-index: 60;
+  height: 40px; padding: 0 12px; border-radius: 10px;
+  border: 1px solid var(--line); background: rgba(255,255,255,0.72);
+  color: var(--ink-soft); font-size: 13px; font-weight: 700; line-height: 1; cursor: pointer;
+  opacity: 0.42; transition: opacity .18s ease, background .18s ease, color .18s ease;
+  -webkit-backdrop-filter: blur(2px); backdrop-filter: blur(2px);
+  display: flex; align-items: center; gap: 5px; letter-spacing: 0.02em;
+}
+#langToggle:hover, #langToggle:focus-visible { opacity: 1; background: #fff; outline: none; }
+#langToggle .lt-on  { color: var(--c-7band); }
+#langToggle .lt-off { color: var(--ink-faint); }
+#langToggle .lt-sep { color: var(--line); font-weight: 400; }
+
+#navOverlay { position: fixed; inset: 0; z-index: 1000; background: rgba(20,24,30,0.55);
+  display: flex; justify-content: flex-end; }
+#navOverlay[hidden] { display: none; }
+
+#navOverlay .nav-panel {
+  width: min(560px, 92vw); height: 100%; background: var(--paper);
+  box-shadow: -12px 0 44px rgba(0,0,0,0.28);
+  display: flex; flex-direction: column;
+  animation: navPanelIn .22s ease;
+  font-family: var(--r-main-font);
+}
+@keyframes navPanelIn { from { transform: translateX(34px); opacity: 0; } to { transform: none; opacity: 1; } }
+
+#navOverlay .nav-head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 20px 14px; border-bottom: 1px solid var(--line); flex: 0 0 auto;
+}
+#navOverlay .nav-title { font-weight: 700; font-size: 18px; color: var(--ink); }
+#navOverlay .nav-title #navCount { color: var(--ink-faint); font-weight: 600; font-size: 13.5px; margin-left: 6px; }
+#navOverlay .nav-actions { display: flex; gap: 7px; align-items: center; }
+#navOverlay .nav-actions button {
+  font-family: inherit; font-size: 13px; font-weight: 600;
+  border: 1px solid var(--line); background: var(--paper-2); color: var(--ink-soft);
+  border-radius: 7px; padding: 5px 11px; cursor: pointer; transition: border-color .15s, color .15s;
+}
+#navOverlay .nav-actions #navClose { font-size: 15px; padding: 5px 9px; }
+#navOverlay .nav-actions button:hover { border-color: var(--c-7band); color: var(--c-7band); }
+#navOverlay .nav-hint { font-size: 12px; color: var(--ink-faint); padding: 9px 20px 2px; flex: 0 0 auto; }
+
+#navOverlay .nav-list { overflow-y: auto; padding: 6px 12px 22px; flex: 1 1 auto; }
+#navOverlay .nav-sect {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--c-7band); margin: 14px 8px 4px;
+}
+#navOverlay .nav-row { display: flex; align-items: center; gap: 11px; padding: 1px 8px; border-radius: 8px; }
+#navOverlay .nav-row:hover { background: var(--paper-2); }
+#navOverlay .nav-row.cur { background: rgba(46,134,171,0.12); }
+#navOverlay .nav-chk { width: 16px; height: 16px; accent-color: var(--c-7band); cursor: pointer; flex: 0 0 auto; }
+#navOverlay .nav-jump {
+  flex: 1; text-align: left; font-family: inherit; font-size: 14px; color: var(--ink);
+  background: none; border: none; cursor: pointer; padding: 7px 4px; line-height: 1.2;
+}
+#navOverlay .nav-jump:hover { color: var(--c-7band); }
+#navOverlay .nav-row.cur .nav-jump { font-weight: 700; color: var(--c-7band); }
+#navOverlay .nav-row.excluded .nav-jump {
+  color: var(--ink-faint); text-decoration: line-through; text-decoration-color: var(--ink-faint);
+}

@@ -1,0 +1,14 @@
+images = 1108 *7*256*256
+
+Class feature statistics:
+features = 4392
+features per image = [min = 1, mean = 3.96, max = 16]
+classes = 7
+cls name                                  cls value     images   features    min size   mean size    max size
+Tree                                              1        424        840        0.00       23.05      131.31
+Building                                          2        156        166        0.00       30.08      110.61
+Road                                              3        390        448        0.01       28.26       98.56
+Vehicle                                           4         92        156        0.00        2.96        6.46
+Grass                                             5        350        376        0.00       40.31      132.60
+Bare Soil                                         6       1052       1436        0.00       57.91      133.74
+Shadow-Noise                                      7        538        970        0.00       13.07      123.69

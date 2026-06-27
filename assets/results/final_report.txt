@@ -1,0 +1,84 @@
+==============================================================================
+FINAL EVALUATION REPORT -- 7-Band vs RGB DeepLab+PointRend
+==============================================================================
+
+Generated          : 2026-04-05 19:37:26
+Models             : DeepLabV3 + PointRend, ResNet-101
+Classes            : Tree, Building, Road, Vehicle, Grass, Bare Soil, Shadow-Noise
+Seed (M4)          : 1988
+Points per class   : 300 (total 2100)
+Inner buffer (M4)  : 3 pixels
+
+------------------------------------------------------------------------------
+METHODS
+------------------------------------------------------------------------------
+M1  EMD validation    : metrics from the 20% validation
+                        set recorded by ArcGIS Pro during
+                        training, parsed from the .emd
+                        file's per_class_metrics field.
+M2  PyTorch raw       : standalone inference on the
+                        classified tiles using the model's
+                        .pth weights -- feeds the model
+                        tensors without normalization, to
+                        document the dependency on the
+                        internal preprocessing pipeline.
+M3  Full raster       : pixel-by-pixel comparison of each
+                        model's classified raster against
+                        the snapped GT raster using windowed
+                        reading and incremental CM.
+M4  Stratified sample : 300 random points per class drawn
+                        from GT polygons buffered inward
+                        3 px, following Congalton & Green
+                        (2009). The SAME 2100 points are
+                        scored against both models (paired).
+
+------------------------------------------------------------------------------
+GLOBAL METRICS
+------------------------------------------------------------------------------
+Model   Method          OA     Kappa   MacroF1      mIoU
+------------------------------------------------------------------------------
+7band   M1          0.9682        --    0.9544        --
+7band   M2          0.9728    0.9606    0.9589    0.9221
+7band   M3          0.9511    0.9251    0.9229    0.8596
+7band   M4          0.9390    0.9289    0.9399    0.8887
+------------------------------------------------------------------------------
+rgb     M1          0.8885        --    0.8294        --
+rgb     M2          0.9100    0.8712    0.8626    0.7657
+rgb     M3          0.8977    0.8426    0.8274    0.7162
+rgb     M4          0.8466    0.8209    0.8452    0.7377
+------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
+PER-CLASS F1 -- 7-Band
+------------------------------------------------------------------------------
+Class                  M1        M2        M3        M4
+------------------------------------------------------------------------------
+Tree               0.9519    0.9606    0.9248    0.9374
+Building           0.9773    0.9858    0.9618    0.9768
+Road               0.9739    0.9783    0.9636    0.9754
+Vehicle            0.9130    0.9190    0.8739    0.9694
+Grass              0.9546    0.9530    0.9144    0.9288
+Bare Soil          0.9801    0.9805    0.9678    0.8716
+Shadow-Noise       0.9299    0.9353    0.8541    0.9201
+
+------------------------------------------------------------------------------
+PER-CLASS F1 -- RGB
+------------------------------------------------------------------------------
+Class                  M1        M2        M3        M4
+------------------------------------------------------------------------------
+Tree               0.8850    0.8897    0.8664    0.8920
+Building           0.8993    0.9396    0.9016    0.8986
+Road               0.8948    0.9132    0.8735    0.8454
+Vehicle            0.6831    0.7327    0.7066    0.8942
+Grass              0.7974    0.8400    0.8358    0.8901
+Bare Soil          0.9348    0.9398    0.9405    0.7994
+Shadow-Noise       0.7115    0.7829    0.6673    0.6966
+
+------------------------------------------------------------------------------
+KEY OBSERVATIONS
+------------------------------------------------------------------------------
+- M1 OA gap (7-band vs RGB): +7.98 percentage points
+- M3 OA gap (7-band vs RGB): +5.35 percentage points
+- M4 OA gap (7-band vs RGB): +9.25 percentage points
+
+==============================================================================

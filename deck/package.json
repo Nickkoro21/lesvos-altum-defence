@@ -1,0 +1,12 @@
+{
+  "name": "thesis-defence-deck",
+  "version": "0.1.0",
+  "private": true,
+  "description": "MSc defence deck — 7-Band vs RGB urban land-cover segmentation (reveal.js, offline)",
+  "license": "MIT",
+  "dependencies": {
+    "katex": "^0.16.11",
+    "puppeteer": "^25.2.0",
+    "reveal.js": "^5.1.0"
+  }
+}
