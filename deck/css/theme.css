@@ -253,6 +253,42 @@
 .reveal .centerfig { text-align: center; margin-top: 0.3em; }
 .reveal .centerfig img { display: block; margin: 0 auto; width: auto; max-width: 100%; max-height: 470px; border-radius: 6px; border: 1px solid var(--line); }
 .reveal .centerfig .figcap { font-size: 0.58em; color: var(--ink-faint); margin-top: 0.4em; line-height: 1.25; text-align: center; }
+/* ---- animated workflow figures (slides 15 & 16) ---- */
+.reveal .centerfig.flow { margin-top: 0.15em; }
+.reveal .flowfig { width: 100%; height: auto; max-height: 486px; display: block; margin: 0 auto; font-family: var(--r-main-font); font-variant-numeric: tabular-nums; }
+.reveal .flowfig text { font-family: var(--r-main-font); }
+/* arrows: fail-safe — default fully drawn; draw-in when their fragment becomes visible */
+.reveal .flowfig .farrow { stroke-dasharray: 360; stroke-dashoffset: 0; }
+.reveal .flowfig .fragment.visible .farrow { animation: fdraw 0.55s ease forwards; }
+@keyframes fdraw { from { stroke-dashoffset: 360; } to { stroke-dashoffset: 0; } }
+/* "−" pulse on the subtract tool */
+.reveal .flowfig .minus { transform-origin: center; transform-box: fill-box; }
+.reveal .flowfig .fragment.visible .minus { animation: mpulse 1.3s ease-in-out 0.35s 2; }
+@keyframes mpulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(1.35); } }
+/* 7-band layer stack drops in one layer at a time */
+.reveal .flowfig .bandlayer { opacity: 0; }
+.reveal .flowfig .fragment.visible .bandlayer { animation: bdrop 0.4s ease forwards; animation-delay: calc(0.3s + var(--i) * 0.11s); }
+@keyframes bdrop { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+/* slide 17 — 7-band stack cascades in when the slide is shown */
+.reveal .stack17 .bandlayer17 { opacity: 0; }
+.reveal section.present .stack17 .bandlayer17 { animation: stackin 0.5s ease forwards; animation-delay: calc(var(--i) * 0.13s); }
+@keyframes stackin { from { opacity: 0; transform: translateX(46px); } to { opacity: 1; transform: translateX(0); } }
+@media (prefers-reduced-motion: reduce) { .reveal .stack17 .bandlayer17 { opacity: 1 !important; animation: none !important; } }
+/* slide 27 — architecture decision flow cascades in top-down */
+.reveal .flow27 .flownode27 { opacity: 0; }
+.reveal section.present .flow27 .flownode27 { animation: flowin 0.45s ease forwards; animation-delay: calc(var(--i) * 0.1s); }
+@keyframes flowin { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) { .reveal .flow27 .flownode27 { opacity: 1 !important; animation: none !important; } }
+/* slide 19 — unified grouped class table */
+.reveal .cls-table { margin-top: .15em; }
+.reveal .cls-group { font-size: .5em; text-transform: uppercase; letter-spacing: .05em; font-weight: 800; color: var(--c-7band); margin: .5em 0 .25em; }
+.reveal .cls-table .cls-group:first-child { margin-top: 0; }
+.reveal .cls-row { display: flex; align-items: center; gap: .55em; font-size: .66em; margin: 0 0 .34em; line-height: 1.2; }
+.reveal .cls-pill { flex: 0 0 auto; width: 1.7em; height: 1.7em; border-radius: 6px; font-weight: 800; display: inline-flex; align-items: center; justify-content: center; font-size: .9em; box-shadow: inset 0 0 0 1px rgba(0,0,0,.18); }
+.reveal .cls-row > b { color: var(--ink); flex: 0 0 6em; white-space: nowrap; }
+.reveal .cls-d { color: var(--ink-soft); font-size: .82em; }
+.reveal .cls-aside { padding-left: .4em; border-left: 1px solid var(--line); }
+.reveal .cls-aside-h { font-size: .62em; font-weight: 800; color: var(--ink); margin: .1em 0 .55em; }
 .reveal .task-img-card .ti-body { padding: 0.5em 0.6em 0.65em; }
 .reveal .task-img-card .ti-title { font-weight: 700; font-size: 0.6em; line-height: 1.1; }
 .reveal .task-img-card .ti-desc { font-size: 0.5em; color: var(--ink-soft); line-height: 1.3; margin-top: 0.25em; }
@@ -332,6 +368,12 @@
 /* class-signature charts (boxplots / spectral lines) — groups reveal with the insight bullets */
 .reveal .sig-chart { width: 100%; height: auto; max-height: 308px; display: block; margin: 0 auto; font-variant-numeric: tabular-nums; }
 /* spectral ±1σ isolate toggles */
+.reveal .sig-chart[data-mode="box"] .m-violin { display: none; }
+.reveal .sig-chart[data-mode="violin"] .m-box { display: none; }
+.reveal .sig-modesw { display: inline-flex; border: 1.4px solid var(--line); border-radius: 8px; overflow: hidden; margin-top: 0.4em; }
+.reveal .sig-mode-btn { font-family: inherit; font-size: 0.46em; font-weight: 700; padding: 0.4em 1em; border: none; background: var(--paper); color: var(--ink-soft); cursor: pointer; }
+.reveal .sig-mode-btn + .sig-mode-btn { border-left: 1px solid var(--line); }
+.reveal .sig-mode-btn.on { background: var(--c-7band); color: #fff; }
 .reveal .sig-chart .sigband { display: none; }
 .reveal .sig-chart.filtering .sigband.on { display: block; }
 .reveal .sig-chart.filtering .sigline:not(.on) { display: none; }

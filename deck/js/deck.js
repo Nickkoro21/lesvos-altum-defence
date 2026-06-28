@@ -117,7 +117,20 @@
     setupNdsm();
     setupPipeline();
     setupSpectralFilter();
+    setupSigMode();
   });
+
+  /* Box ↔ Violin toggle for the nDSM / thermal signature charts. */
+  function setupSigMode() {
+    document.addEventListener('click', function (e) {
+      var btn = e.target.closest ? e.target.closest('.sig-mode-btn') : null;
+      if (!btn) return;
+      var sec = btn.closest('section'); if (!sec) return;
+      var chart = sec.querySelector('.sig-chart'); if (!chart) return;
+      chart.setAttribute('data-mode', btn.getAttribute('data-mode'));
+      sec.querySelectorAll('.sig-mode-btn').forEach(function (x) { x.classList.toggle('on', x === btn); });
+    });
+  }
 
   /* ===================== Spectral ±1σ isolate toggles =====================
      Buttons under the spectral chart filter it: with ≥1 class active, only the
