@@ -29,13 +29,13 @@
           <b>Nikolaos Koroniadis</b> · MSc “Geography &amp; Applied Geoinformatics”<br>
           Supervisor: Assist. Prof. Dr. Christos Vasilakos<br>
           Committee: Prof. Dr. Nikolaos Soulakellis · Assoc. Prof. Dr. Dimitrios Kavroudakis<br>
-          Mytilene, Greece · 2026
+          Mytilene &amp; Kalamata, Greece · 2026
         </span>
         <span class="lang-el">
           <b>Νικόλαος Κορωνιάδης</b> · ΠΜΣ «Γεωγραφία &amp; Εφαρμοσμένη Γεωπληροφορική»<br>
           Επιβλέπων: Επίκ. Καθηγητής Δρ. Χρήστος Βασιλάκος<br>
           Επιτροπή: Καθηγητής Δρ. Νικόλαος Σουλακέλλης · Αναπλ. Καθηγητής Δρ. Δημήτριος Καβρουδάκης<br>
-          Μυτιλήνη, Ελλάδα · 2026
+          Μυτιλήνη &amp; Καλαμάτα, Ελλάδα · 2026
         </span>
       </div>
     </section>
@@ -63,6 +63,23 @@
         <span class="chip rm-chip"><span class="lang-en">Conclusions</span><span class="lang-el">Συμπεράσματα</span></span>
       </div>
       <div class="callout fragment fade-up" data-fragment-index="2" style="margin-top:1em; margin-right:185px; font-size:1.1em;"><span class="lang-en">Spoiler: the answer is <strong>YES</strong>.</span><span class="lang-el">Spoiler: η απάντηση είναι <strong>ΝΑΙ</strong>.</span></div>
+      <div class="logo-bar">
+        <img src="../assets/logos/tmima_logo.png" alt="Department">
+        <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
+      </div>
+    </section>
+
+    <!-- ===================== Slide 3 – Prior fusion evidence =============== -->
+    <section data-transition="slide">
+      <div class="kicker"><span class="lang-en">Background · prior fusion evidence</span><span class="lang-el">Υπόβαθρο · προηγούμενες ενδείξεις σύντηξης</span></div>
+      <h2 class="slide-title"><span class="lang-en">Why expect extra channels to help? <em>Prior fusion studies say yes</em></span><span class="lang-el">Γιατί να βοηθούν τα επιπλέον κανάλια; <em>Η προηγούμενη έρευνα λέει ναι</em></span></h2>
+      <div class="gloss-grid">
+        <div class="gloss-card fragment"><div class="g-term">Audebert et al. (2018) · V-FuseNet</div><div class="g-def"><span class="lang-en">Fusing <b>DSM/DTM</b> into the network cuts confusion between spectrally-similar classes ("Beyond RGB", ISPRS).</span><span class="lang-el">Η σύντηξη <b>DSM/DTM</b> στο δίκτυο μειώνει τη σύγχυση μεταξύ φασματικά όμοιων κλάσεων («Beyond RGB», ISPRS).</span></div></div>
+        <div class="gloss-card fragment"><div class="g-term">Lee et al. (2023) · NDVI + thermal</div><div class="g-def"><span class="lang-en">Adding <b>LWIR</b> raises Cohen's κ from <b>0.830 → 0.934</b> (n = 4,409): heat separates identical spectra.</span><span class="lang-el">Η προσθήκη <b>LWIR</b> ανεβάζει το Cohen's κ από <b>0,830 → 0,934</b> (n = 4.409): η θερμότητα διαχωρίζει ίδια φάσματα.</span></div></div>
+        <div class="gloss-card fragment"><div class="g-term">Kemker et al. (2018) · RIT-18</div><div class="g-def"><span class="lang-en">A <b>6-band UAV</b> benchmark establishing multispectral deep-learning training standards.</span><span class="lang-el">Ένα benchmark <b>6 καναλιών UAV</b> που θεμελιώνει πρότυπα εκπαίδευσης πολυφασματικής βαθιάς μάθησης.</span></div></div>
+      </div>
+      <div class="callout fragment fade-up" style="margin-top:.7em; margin-right:185px;"><span class="lang-en">So the gain is plausible <em>a priori</em>. We pre-registered the bar: <strong>ΔOA ≥ 5 pp</strong> with a 95% bootstrap CI excluding 0. Observed: <strong>+10.6</strong>.</span><span class="lang-el">Άρα το όφελος είναι εύλογο <em>εκ των προτέρων</em>. Ορίσαμε εκ των προτέρων το κατώφλι: <strong>ΔOA ≥ 5 μον.</strong> με 95% bootstrap CI που δεν περιλαμβάνει το 0. Παρατηρήθηκε: <strong>+10,6</strong>.</span></div>
+      <div class="slide-fn">Audebert et al. (2018); Lee et al. (2023); Kemker et al. (2018).</div>
       <div class="logo-bar">
         <img src="../assets/logos/tmima_logo.png" alt="Department">
         <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
@@ -219,6 +236,7 @@
             <li class="fragment"><span class="lang-en"><b>Atrous (dilated) convolution</b> enlarges the receptive field at the same resolution – no extra parameters.</span><span class="lang-el">Η <b>atrous (διεσταλμένη) συνέλιξη</b> διευρύνει το δεκτικό πεδίο στην ίδια ανάλυση – χωρίς επιπλέον παραμέτρους.</span></li>
             <li class="fragment"><span class="lang-en"><b>ASPP</b> runs atrous convolutions at several rates in parallel → multi-scale context.</span><span class="lang-el">Το <b>ASPP</b> τρέχει atrous συνελίξεις σε πολλούς ρυθμούς παράλληλα → συγκείμενο πολλαπλών κλιμάκων.</span></li>
             <li class="fragment"><span class="lang-en">DeepLab evolved v1 → v2 → v3 → v3+ ; we build on <b>DeepLabV3</b>.</span><span class="lang-el">Το DeepLab εξελίχθηκε v1 → v2 → v3 → v3+· εμείς χτίζουμε πάνω στο <b>DeepLabV3</b>.</span></li>
+            <li class="fragment"><span class="lang-en"><b>Why v3, not v3+?</b> v3+ adds a light decoder for boundaries — but <b>PointRend already does that job</b>, sharper. v3 + PointRend keeps the atrous dilation and avoids a redundant decoder.</span><span class="lang-el"><b>Γιατί v3 κι όχι v3+;</b> Το v3+ προσθέτει έναν ελαφρύ decoder για τα όρια — μα <b>το PointRend το κάνει ήδη</b>, αιχμηρότερα. Το v3 + PointRend κρατά τη διεσταλμένη συνέλιξη χωρίς πλεονάζοντα decoder.</span></li>
           </ul>
         </div>
       </div>
@@ -246,13 +264,14 @@
           <div class="st-desc"><span class="lang-en">ASPP gathers multi-scale context → coarse semantic mask</span><span class="lang-el">Το ASPP συγκεντρώνει συγκείμενο πολλαπλών κλιμάκων → αδρή σημασιολογική μάσκα</span></div>
         </div>
         <div class="arrow fragment" data-fragment-index="3">→</div>
-        <div class="stage lead fragment grow" data-fragment-index="3">
+        <div class="stage lead fragment" data-fragment-index="3">
           <div class="st-step"><span class="lang-en">Boundaries</span><span class="lang-el">Όρια</span></div>
           <div class="st-name">PointRend</div>
           <div class="st-desc"><span class="lang-en">Refines uncertain edge points → sharp, crisp masks</span><span class="lang-el">Εκλεπτύνει αβέβαια σημεία ακμών → οξείες, ευκρινείς μάσκες</span></div>
         </div>
       </div>
       <div class="callout fragment fade-up" data-fragment-index="4" style="margin-top:1em; margin-right:185px;"><span class="lang-en">PointRend treats segmentation as <strong>rendering</strong> – spending computation exactly where boundaries are ambiguous. That precision is what later separates Buildings, Vehicles and Roads.</span><span class="lang-el">Το PointRend αντιμετωπίζει την κατάτμηση ως <strong>rendering</strong> – δαπανώντας υπολογισμό ακριβώς εκεί που τα όρια είναι ασαφή. Αυτή η ακρίβεια είναι που αργότερα ξεχωρίζει Building, Vehicle και Road.</span></div>
+      <div class="small muted fragment" style="margin-top:.4em;"><span class="lang-en"><b>Why not a plain U-Net / SegNet encoder-decoder?</b> At 4.52 cm GSD the scene runs from car-scale objects to building-scale structures — ASPP's multi-scale context + native &gt;3-channel input fit it better.</span><span class="lang-el"><b>Γιατί όχι απλό U-Net / SegNet encoder-decoder;</b> Στα 4,52 cm GSD η σκηνή εκτείνεται από αντικείμενα κλίμακας οχήματος έως κτίρια — το πολυκλιμακωτό συγκείμενο του ASPP + η εγγενής υποστήριξη &gt;3 καναλιών ταιριάζουν καλύτερα.</span></div>
       <div class="slide-fn">Chen et al. (2017); Kirillov et al. (2020).</div>
       <div class="logo-bar">
         <img src="../assets/logos/tmima_logo.png" alt="Department">
@@ -347,10 +366,10 @@
           <tr class="fragment"><td><span class="lang-en">Mean GSD (cm)</span><span class="lang-el">Μέσο GSD (cm)</span></td><td class="num">4.5</td><td class="num">2.1</td><td class="num">28.0</td></tr>
           <tr class="fragment"><td><span class="lang-en">Calibrated images</span><span class="lang-el">Βαθμονομημένες εικόνες</span></td><td class="num">99.83%</td><td class="num">99.83%</td><td class="num">99.83%</td></tr>
           <tr class="fragment"><td><span class="lang-en">Tie-point RMSE (px)</span><span class="lang-el">RMSE tie-point (px)</span></td><td class="num">0.31</td><td class="num">0.38</td><td class="num">0.25</td></tr>
-          <tr class="fragment"><td><span class="lang-en">Ground control points</span><span class="lang-el">Σημεία ελέγχου εδάφους (GCPs)</span></td><td class="num">0</td><td class="num">0</td><td class="num">0</td></tr>
+          <tr class="fragment"><td><span class="lang-en">GCPs / checkpoints</span><span class="lang-el">GCPs / checkpoints</span></td><td class="num">0 / 0</td><td class="num">0 / 0</td><td class="num">0 / 0</td></tr>
         </tbody>
       </table>
-      <div class="callout fragment fade-up" style="margin-top:.45em; margin-right:185px;"><span class="lang-en">All three solved <strong>without GCPs</strong> (RTK/PPK), &gt; 99.8% images calibrated, RMSE &lt; 0.4 px. The orthos were then resampled to a <strong>common 4.52 cm grid</strong> → the 7-band stack.</span><span class="lang-el">Και τα τρία επιλύθηκαν <strong>χωρίς GCPs</strong> (RTK/PPK), &gt; 99,8% εικόνες βαθμονομημένες, RMSE &lt; 0,4 px. Στη συνέχεια τα ορθομωσαϊκά επαναδειγματοληπτήθηκαν σε <strong>κοινό πλέγμα 4,52 cm</strong> → η στοίβα 7 καναλιών.</span></div>
+      <div class="callout fragment fade-up" style="margin-top:.45em; margin-right:185px;"><span class="lang-en"><strong>No GCPs or checkpoints</strong>: tie-point RMSE &lt; 0.4 px is the <em>internal</em> fit. Absolute geolocation comes from the <strong>RTK fix</strong> — GPSXYAccuracy ≈ <strong>1.5 cm</strong>, GPSZAccuracy ≈ <strong>2.6 cm</strong> per image (DJI Matrice 350 RTK).</span><span class="lang-el"><strong>Χωρίς GCPs ή checkpoints</strong>: το RMSE tie-point &lt; 0,4 px είναι η <em>εσωτερική</em> προσαρμογή. Η απόλυτη γεωαναφορά προκύπτει από το <strong>RTK fix</strong> — GPSXYAccuracy ≈ <strong>1,5 cm</strong>, GPSZAccuracy ≈ <strong>2,6 cm</strong> ανά εικόνα (DJI Matrice 350 RTK).</span></div>
       <div class="slide-fn">ESRI (n.d.) – ArcGIS Drone2Map processing reports.</div>
       <div class="logo-bar">
         <img src="../assets/logos/tmima_logo.png" alt="Department">
@@ -422,7 +441,7 @@
           </ul>
         </div>
       </div>
-      <div class="callout fragment fade-up" style="margin-top:.2em; margin-right:185px;"><span class="lang-en">Input: the <strong>7-band raster</strong>, not RGB.</span><span class="lang-el">Είσοδος: ο <strong>raster 7 καναλιών</strong>, όχι RGB.</span></div>
+      <div class="callout fragment fade-up" style="margin-top:.2em; margin-right:185px;"><span class="lang-en">Input: the <strong>7-band raster</strong>, not RGB.</span><span class="lang-el">Είσοδος: το <strong>raster 7 καναλιών</strong>, όχι RGB.</span></div>
       <div class="logo-bar">
         <img src="../assets/logos/tmima_logo.png" alt="Department">
         <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
@@ -488,7 +507,7 @@
           <ul class="chall">
             <li class="fragment" data-fragment-index="5"><span class="lang-en"><b>Six real surfaces</b> — the targets of the map.</span><span class="lang-el"><b>Έξι πραγματικές επιφάνειες</b> — ο στόχος του χάρτη.</span></li>
             <li class="fragment" data-fragment-index="6"><span class="lang-en"><b>Shadow-Noise</b> is a <em>technical</em> class — it absorbs deep-shadow &amp; sensor-noise pixels so they don't corrupt the six real classes.</span><span class="lang-el">Το <b>Shadow-Noise</b> είναι <em>τεχνική</em> κλάση — απορροφά pixel βαθιάς σκιάς &amp; θορύβου ώστε να μη μολύνουν τις έξι πραγματικές κλάσεις.</span></li>
-            <li class="fragment" data-fragment-index="7"><span class="lang-en">Coded <b>1–7</b> (Coded Value Domain) in the geodatabase — identical CRS to the 7-band raster.</span><span class="lang-el">Κωδικοποιημένες <b>1–7</b> (Coded Value Domain) στη γεωβάση — ίδιο CRS με τον raster 7 καναλιών.</span></li>
+            <li class="fragment" data-fragment-index="7"><span class="lang-en">Coded <b>1–7</b> (Coded Value Domain) in the geodatabase — identical CRS to the 7-band raster.</span><span class="lang-el">Κωδικοποιημένες <b>1–7</b> (Coded Value Domain) στη γεωβάση — ίδιο CRS με το raster 7 καναλιών.</span></li>
           </ul>
         </div>
       </div>
@@ -530,7 +549,7 @@
         </div>
         <div>
           <ol class="steps">
-            <li class="fragment" data-fragment-index="1"><span class="lang-en">A <b>Feature Dataset</b> in a File Geodatabase fixes one shared CRS – identical to the 7-band raster.</span><span class="lang-el">Ένα <b>Feature Dataset</b> σε File Geodatabase ορίζει ένα κοινό σύστημα αναφοράς – ταυτόσημο με τον raster 7 καναλιών.</span></li>
+            <li class="fragment" data-fragment-index="1"><span class="lang-en">A <b>Feature Dataset</b> in a File Geodatabase fixes one shared CRS – identical to the 7-band raster.</span><span class="lang-el">Ένα <b>Feature Dataset</b> σε File Geodatabase ορίζει ένα κοινό σύστημα αναφοράς – ταυτόσημο με το raster 7 καναλιών.</span></li>
             <li class="fragment" data-fragment-index="2"><span class="lang-en">Digitize polygons for the 7 classes, then enforce topology <span class="rule">“Must Not Overlap”</span> – one pixel ⇒ exactly one class (no conflicting labels).</span><span class="lang-el">Ψηφιοποίηση πολυγώνων για τις 7 κλάσεις, και μετά επιβολή τοπολογίας <span class="rule">«Must Not Overlap»</span> – ένα pixel ⇒ ακριβώς μία κλάση (χωρίς αντικρουόμενες ετικέτες).</span></li>
             <li class="fragment" data-fragment-index="3"><span class="lang-en"><b>Export Training Data for Deep Learning</b> → 512×512 image chips + label masks (Classified Tiles).</span><span class="lang-el"><b>Export Training Data for Deep Learning</b> → image chips 512×512 + μάσκες ετικετών (Classified Tiles).</span></li>
             <li class="fragment" data-fragment-index="4"><span class="lang-en">From <b>293 polygons</b> → <b>3,377 chips</b> + masks, expanded at train time by augmentation (incl. mixup).</span><span class="lang-el">Από <b>293 πολύγωνα</b> → <b>3.377 chips</b> + μάσκες, που επεκτείνονται κατά την εκπαίδευση με augmentation (συμπ. mixup).</span></li>
@@ -764,6 +783,23 @@
       </div>
     </section>
 
+    <!-- ===================== Slide 32 – Four methods M1–M4 ================= -->
+    <section data-transition="slide">
+      <div class="kicker"><span class="lang-en">Evaluation · four complementary methods</span><span class="lang-el">Αξιολόγηση · τέσσερις συμπληρωματικές μέθοδοι</span></div>
+      <h2 class="slide-title"><span class="lang-en">Four independent methods, so the verdict can't be <em>an artefact of one test</em></span><span class="lang-el">Τέσσερις ανεξάρτητες μέθοδοι, ώστε η ετυμηγορία να μην είναι <em>αποτέλεσμα ενός μόνο ελέγχου</em></span></h2>
+      <div class="method-grid">
+        <div class="method-card fragment" data-fragment-index="1"><div class="m-tag">M1</div><div class="m-name"><span class="lang-en">Internal</span><span class="lang-el">Εσωτερική</span></div><div class="m-desc"><span class="lang-en">Metrics from each model's EMD (80/20 split).</span><span class="lang-el">Μετρικές από το EMD κάθε μοντέλου (διαχωρισμός 80/20).</span></div></div>
+        <div class="method-card fragment" data-fragment-index="2"><div class="m-tag">M2</div><div class="m-name"><span class="lang-en">Portability</span><span class="lang-el">Φορητότητα</span></div><div class="m-desc"><span class="lang-en">PyTorch tile inference <em>outside</em> ArcGIS — a deployability check.</span><span class="lang-el">PyTorch tile inference <em>εκτός</em> ArcGIS — έλεγχος φορητότητας.</span></div></div>
+        <div class="method-card fragment" data-fragment-index="3"><div class="m-tag">M3</div><div class="m-name"><span class="lang-en">Full scene</span><span class="lang-el">Πλήρης σκηνή</span></div><div class="m-desc"><span class="lang-en">Pixel-for-pixel over the whole raster (OA 95.1% vs 89.8%).</span><span class="lang-el">Pixel-προς-pixel σε όλο το raster (OA 95,1% vs 89,8%).</span></div></div>
+        <div class="method-card lead fragment" data-fragment-index="4"><div class="m-tag">M4</div><div class="m-name"><span class="lang-en">Paired sampling</span><span class="lang-el">Ζευγαρωτή δειγματοληψία</span></div><div class="m-desc"><span class="lang-en">The rigorous, statistically valid comparison.</span><span class="lang-el">Η αυστηρή, στατιστικά έγκυρη σύγκριση.</span></div></div>
+      </div>
+      <div class="callout fragment fade-up" data-fragment-index="5" style="margin-top:.9em; margin-right:185px;"><span class="lang-en">All four agree – the advantage is <strong>structural</strong>, not a sampling fluke. <strong>M4</strong> is the one we then test statistically.</span><span class="lang-el">Και οι τέσσερις συμφωνούν – το πλεονέκτημα είναι <strong>δομικό</strong>, όχι τυχαίο της δειγματοληψίας. Το <strong>M4</strong> είναι αυτό που μετά ελέγχουμε στατιστικά.</span></div>
+      <div class="logo-bar">
+        <img src="../assets/logos/tmima_logo.png" alt="Department">
+        <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
+      </div>
+    </section>
+
     <!-- ===================== Slide 31 – Model-metrics table ================ -->
     <section data-transition="slide">
       <div class="kicker"><span class="lang-en">Evaluation · internal-validation metrics</span><span class="lang-el">Αξιολόγηση · μετρικές εσωτερικής επικύρωσης</span></div>
@@ -787,17 +823,24 @@
       </div>
     </section>
 
-    <!-- ===================== Slide 32 – Four methods M1–M4 ================= -->
+    <!-- ===================== Slide 32 – M2 deep-dive (portability / normalization) ======== -->
     <section data-transition="slide">
-      <div class="kicker"><span class="lang-en">Evaluation · four complementary methods</span><span class="lang-el">Αξιολόγηση · τέσσερις συμπληρωματικές μέθοδοι</span></div>
-      <h2 class="slide-title"><span class="lang-en">Four independent methods, so the verdict can't be <em>an artefact of one test</em></span><span class="lang-el">Τέσσερις ανεξάρτητες μέθοδοι, ώστε η ετυμηγορία να μην είναι <em>αποτέλεσμα ενός μόνο ελέγχου</em></span></h2>
-      <div class="method-grid">
-        <div class="method-card fragment" data-fragment-index="1"><div class="m-tag">M1</div><div class="m-name"><span class="lang-en">Internal</span><span class="lang-el">Εσωτερική</span></div><div class="m-desc"><span class="lang-en">Metrics from each model's EMD (80/20 split).</span><span class="lang-el">Μετρικές από το EMD κάθε μοντέλου (διαχωρισμός 80/20).</span></div></div>
-        <div class="method-card fragment" data-fragment-index="2"><div class="m-tag">M2</div><div class="m-name"><span class="lang-en">Per-chip</span><span class="lang-el">Ανά chip</span></div><div class="m-desc"><span class="lang-en">Independent re-computation on held-out image chips.</span><span class="lang-el">Ανεξάρτητος επανυπολογισμός σε held-out image chips.</span></div></div>
-        <div class="method-card fragment" data-fragment-index="3"><div class="m-tag">M3</div><div class="m-name"><span class="lang-en">Full scene</span><span class="lang-el">Πλήρης σκηνή</span></div><div class="m-desc"><span class="lang-en">Pixel-for-pixel over the whole raster (OA 95.1% vs 89.8%).</span><span class="lang-el">Pixel-προς-pixel σε όλο τον raster (OA 95,1% vs 89,8%).</span></div></div>
-        <div class="method-card lead fragment" data-fragment-index="4"><div class="m-tag">M4</div><div class="m-name"><span class="lang-en">Paired sampling</span><span class="lang-el">Ζευγαρωτή δειγματοληψία</span></div><div class="m-desc"><span class="lang-en">The rigorous, statistically valid comparison.</span><span class="lang-el">Η αυστηρή, στατιστικά έγκυρη σύγκριση.</span></div></div>
+      <div class="kicker"><span class="lang-en">Evaluation · M2 deep-dive · a documented finding</span><span class="lang-el">Αξιολόγηση · εμβάθυνση M2 · τεκμηριωμένο εύρημα</span></div>
+      <h2 class="slide-title"><span class="lang-en">M2: a <em>documented failure → recovery</em> (models embed their preprocessing)</span><span class="lang-el">M2: μια <em>τεκμηριωμένη αποτυχία → ανάκαμψη</em> (τα μοντέλα ενσωματώνουν την προεπεξεργασία τους)</span></h2>
+      <div class="cols s-45-55">
+        <div class="fig">
+          <svg class="m2chart" viewBox="0 0 440 332" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><defs><marker id="m2a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1.5 1.5L8.5 5L1.5 8.5" fill="none" stroke="context-stroke" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></marker></defs><line x1="70" y1="280.0" x2="420" y2="280.0" stroke="var(--line)" stroke-width="1"/><text x="60" y="284.0" text-anchor="end" font-size="11" fill="var(--ink-faint)" font-weight="600">0</text><line x1="70" y1="222.5" x2="420" y2="222.5" stroke="var(--line)" stroke-width="1" stroke-dasharray="3 6"/><text x="60" y="226.5" text-anchor="end" font-size="11" fill="var(--ink-faint)" font-weight="600">25</text><line x1="70" y1="165.0" x2="420" y2="165.0" stroke="var(--line)" stroke-width="1" stroke-dasharray="3 6"/><text x="60" y="169.0" text-anchor="end" font-size="11" fill="var(--ink-faint)" font-weight="600">50</text><line x1="70" y1="107.5" x2="420" y2="107.5" stroke="var(--line)" stroke-width="1" stroke-dasharray="3 6"/><text x="60" y="111.5" text-anchor="end" font-size="11" fill="var(--ink-faint)" font-weight="600">75</text><line x1="70" y1="50.0" x2="420" y2="50.0" stroke="var(--line)" stroke-width="1" stroke-dasharray="3 6"/><text x="60" y="54.0" text-anchor="end" font-size="11" fill="var(--ink-faint)" font-weight="600">100</text><line x1="70" y1="50" x2="70" y2="280" stroke="var(--ink-soft)" stroke-width="1.5"/><text x="22" y="165" transform="rotate(-90 22 165)" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--ink-soft)">Overall accuracy (%)</text><g class="fragment fade-up" data-fragment-index="1"><rect x="115" y="128.4" width="90" height="151.6" rx="2" fill="#C0584F" stroke="#A81616" stroke-width="1.2"/><text x="160" y="120.4" text-anchor="middle" font-size="15" font-weight="800" fill="#A81616">65.9%</text><text x="160" y="298" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">1st attempt</text><text x="160" y="312" text-anchor="middle" font-size="9.6" fill="var(--ink-soft)">no normalization</text></g><g class="fragment fade-up" data-fragment-index="2"><rect x="275" y="56.3" width="90" height="223.7" rx="2" fill="#5BA46A" stroke="#3f8a52" stroke-width="1.2"/><text x="320" y="48.3" text-anchor="middle" font-size="15" font-weight="800" fill="#2f7a44">97.28%</text><text x="320" y="298" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">2nd attempt</text><text x="320" y="312" text-anchor="middle" font-size="9.6" fill="var(--ink-soft)">EMD z-score normalization</text><path d="M205,125.9 C235,91.4 250,61.5 275,58.7" fill="none" stroke="#2f7a44" stroke-width="2.2" marker-end="url(#m2a)"/><text x="243" y="73.0" text-anchor="middle" font-size="12" font-weight="800" fill="#2f7a44">+31.4 pts</text></g></svg>
+          <div class="figcap"><span class="lang-en">7-Band overall accuracy under M2 (PyTorch tile inference outside ArcGIS).</span><span class="lang-el">Ολική ακρίβεια 7-Band στο M2 (PyTorch tile inference εκτός ArcGIS).</span></div>
+        </div>
+        <div>
+          <ul class="chall">
+            <li class="fragment" data-fragment-index="1"><span class="lang-en"><b>1st attempt:</b> raw PyTorch inference, no normalization → <b>65.9%</b> OA, far below the ArcGIS result.</span><span class="lang-el"><b>1η προσπάθεια:</b> raw PyTorch inference χωρίς normalization → <b>65,9%</b> OA, πολύ κάτω από το ArcGIS.</span></li>
+            <li class="fragment" data-fragment-index="1"><span class="lang-en"><b>Cause:</b> <code>arcgis.learn</code> models silently <b>embed their preprocessing</b>: the normalization statistics live inside the <code>.emd</code>.</span><span class="lang-el"><b>Αιτία:</b> τα μοντέλα <code>arcgis.learn</code> <b>ενσωματώνουν σιωπηλά την προεπεξεργασία</b>: τα στατιστικά normalization βρίσκονται μέσα στο <code>.emd</code>.</span></li>
+            <li class="fragment" data-fragment-index="2"><span class="lang-en"><b>2nd attempt:</b> replicate the EMD z-score normalization → <b>97.28%</b>, back to ArcGIS-Pro level (<b>+31.4 pts</b>).</span><span class="lang-el"><b>2η προσπάθεια:</b> αναπαραγωγή της EMD z-score normalization → <b>97,28%</b>, επιστροφή στο επίπεδο ArcGIS Pro (<b>+31,4 μον.</b>).</span></li>
+          </ul>
+          <div class="callout fragment fade-up" data-fragment-index="3" style="margin-right:185px;"><span class="lang-en">Reported as a <strong>methodological contribution</strong>: to deploy a geospatial DL model <strong>outside</strong> its training tool, you must reproduce its embedded preprocessing, or accuracy collapses.</span><span class="lang-el">Καταγράφεται ως <strong>μεθοδολογική συνεισφορά</strong>: για ανάπτυξη γεωχωρικού μοντέλου <strong>εκτός</strong> του εργαλείου εκπαίδευσης, πρέπει να αναπαραχθεί η ενσωματωμένη προεπεξεργασία, αλλιώς η ακρίβεια καταρρέει.</span></div>
+        </div>
       </div>
-      <div class="callout fragment fade-up" data-fragment-index="5" style="margin-top:.9em; margin-right:185px;"><span class="lang-en">All four agree – the advantage is <strong>structural</strong>, not a sampling fluke. <strong>M4</strong> is the one we then test statistically.</span><span class="lang-el">Και οι τέσσερις συμφωνούν – το πλεονέκτημα είναι <strong>δομικό</strong>, όχι τυχαίο της δειγματοληψίας. Το <strong>M4</strong> είναι αυτό που μετά ελέγχουμε στατιστικά.</span></div>
       <div class="logo-bar">
         <img src="../assets/logos/tmima_logo.png" alt="Department">
         <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
@@ -815,7 +858,7 @@
             <div class="stat fragment" data-fragment-index="1"><div class="v" style="color:var(--c-7band)">300</div><div class="l"><span class="lang-en">per class (balanced)</span><span class="lang-el">ανά κλάση (ισορροπημένα)</span></div></div>
           </div>
           <ul class="chall" style="margin-top:.5em;">
-            <li class="fragment" data-fragment-index="3"><span class="lang-en"><b>Stratified random</b> sampling (Congalton &amp; Green protocol) – equal coverage of rare classes, not pixel-weighted.</span><span class="lang-el"><b>Στρωματοποιημένη τυχαία</b> δειγματοληψία (πρωτόκολλο Congalton &amp; Green) – ίση κάλυψη των σπάνιων κλάσεων, όχι σταθμισμένη ανά pixel.</span></li>
+            <li class="fragment" data-fragment-index="3"><span class="lang-en"><b>Stratified random</b> sampling (Congalton &amp; Green protocol) – equal coverage of rare classes, not pixel-weighted. Whole-scene OA (M3) is dominated by <b>Bare Soil ≈ 55%</b> of pixels, so M4 weights every class equally.</span><span class="lang-el"><b>Στρωματοποιημένη τυχαία</b> δειγματοληψία (πρωτόκολλο Congalton &amp; Green) – ίση κάλυψη των σπάνιων κλάσεων, όχι σταθμισμένη ανά pixel. Η ολική ακρίβεια όλης της σκηνής (M3) κυριαρχείται από το <b>Bare Soil ≈ 55%</b> των pixels, γι' αυτό το M4 σταθμίζει κάθε κλάση ισότιμα.</span></li>
             <li class="fragment" data-fragment-index="4"><span class="lang-en"><b>Paired design</b>: each point carries ground truth + the 7-Band prediction + the RGB prediction.</span><span class="lang-el"><b>Ζευγαρωτός σχεδιασμός</b>: κάθε σημείο φέρει την αλήθεια εδάφους + την πρόβλεψη 7-Band + την πρόβλεψη RGB.</span></li>
           </ul>
         </div>
@@ -907,7 +950,7 @@
     <section data-transition="slide">
       <div class="kicker"><span class="lang-en">Statistical evidence · (2) Holm–Bonferroni – per class</span><span class="lang-el">Στατιστική απόδειξη · (2) Holm–Bonferroni – ανά κλάση</span></div>
       <h2 class="slide-title"><span class="lang-en">Strict correction changes <em>which classes count</em>: vegetation drops out</span><span class="lang-el">Η αυστηρή διόρθωση αλλάζει <em>ποιες κλάσεις μετρούν</em>: η βλάστηση εκπίπτει</span></h2>
-      <div class="small muted" style="margin:-.2em 0 .35em;"><span class="lang-en">Per-class McNemar · Holm step-down · m = 7 · α = 0.05 · adjusted <em>p</em> = p<sub>raw</sub>×(m−i+1)</span><span class="lang-el">McNemar ανά κλάση · Holm step-down · m = 7 · α = 0,05 · προσαρμοσμένο <em>p</em> = p<sub>raw</sub>×(m−i+1)</span></div>
+      <div class="small muted" style="margin:-.2em 0 .35em;"><span class="lang-en">Per-class McNemar · Holm step-down · m = 7 · α = 0.05 · uncorrected <b>FWER</b> (7 indep. tests) = 1−0.95⁷ ≈ <b>30%</b></span><span class="lang-el">McNemar ανά κλάση · Holm step-down · m = 7 · α = 0,05 · <b>FWER</b> χωρίς διόρθωση (7 ανεξ. έλεγχοι) = 1−0,95⁷ ≈ <b>30%</b></span></div>
 
       <!-- staged step-down: rows reveal raw p (5 look significant) -> "Apply Holm"
            fades in the correction columns AND flips Grass/Tree to ns (deck.js). -->
@@ -1029,7 +1072,8 @@
         </tbody>
       </table>
       <div class="callout fragment fade-up" style="margin-top:.5em; margin-right:185px;"><span class="lang-en">The gap is largest on <strong>mIoU (+15.1)</strong> – the strictest, overlap-based metric – confirming sharper, better-delineated regions, not just more correct pixels.</span><span class="lang-el">Η μεγαλύτερη διαφορά είναι στο <strong>mIoU (+15,1)</strong> – την αυστηρότερη μετρική (βάσει επικάλυψης) – επιβεβαιώνοντας πιο ευκρινείς, καλύτερα οριοθετημένες περιοχές, όχι απλώς περισσότερα σωστά pixels.</span></div>
-      <div class="slide-fn"><span class="lang-en">Paired stratified evaluation (M4), n = 2,100; identical points for both models.</span><span class="lang-el">Ζευγαρωτή στρωματοποιημένη αξιολόγηση (M4), n = 2.100· ίδια σημεία και για τα δύο μοντέλα.</span></div>
+      <div class="small muted fragment" style="margin:.15em 0 0;"><span class="lang-en">Cohen's κ scale (Landis &amp; Koch 1977): ≥ 0.81 = "almost perfect" — RGB (0.82) already clears it, yet 7-Band still adds +10.8 κ-points.</span><span class="lang-el">Κλίμακα Cohen's κ (Landis &amp; Koch 1977): ≥ 0,81 = «σχεδόν τέλεια» — το RGB (0,82) ήδη πληροί, κι όμως το 7-Band προσθέτει +10,8 μονάδες κ.</span></div>
+      <div class="slide-fn"><span class="lang-en">Paired stratified evaluation (M4), n = 2,100; identical points for both models. 34/2,100 points fall outside the RGB raster extent (NoData) → counted as RGB errors.</span><span class="lang-el">Ζευγαρωτή στρωματοποιημένη αξιολόγηση (M4), n = 2.100· ίδια σημεία και για τα δύο μοντέλα. 34/2.100 σημεία πέφτουν εκτός της έκτασης του RGB raster (NoData) → μετρήθηκαν ως σφάλματα RGB.</span></div>
       <div class="logo-bar">
         <img src="../assets/logos/tmima_logo.png" alt="Department">
         <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
@@ -1524,6 +1568,7 @@
             <li class="fragment"><span class="d-name"><span class="lang-en">Interactive methodology map</span><span class="lang-el">Διαδραστικός χάρτης μεθοδολογίας</span></span> – <a class="d-url" href="https://nickkoro21.github.io/lesvos-altum-segmentation/" target="_blank" rel="noopener">GitHub Pages · web app</a></li>
             <li class="fragment"><span class="d-name"><span class="lang-en">7-Band vs RGB dashboard</span><span class="lang-el">Dashboard 7-Band vs RGB</span></span> – <a class="d-url" href="https://nickkoro21.github.io/thesis-7band-vs-rgb/" target="_blank" rel="noopener">GitHub Pages · web app</a></li>
             <li class="fragment"><span class="d-name">Spectral 3D Explorer</span> – <a class="d-url" href="https://huggingface.co/spaces/NickKoro21/spectral-3d-explorer" target="_blank" rel="noopener">Hugging Face · Space</a></li>
+            <li class="fragment"><span class="d-name">JM Separability Toolbox</span> – <a class="d-url" href="https://huggingface.co/spaces/NickKoro21/jm-separability-toolbox" target="_blank" rel="noopener">Hugging Face · Space</a></li>
             <li class="fragment"><span class="d-name"><span class="lang-en">Agentic GeoAI walkthrough</span><span class="lang-el">Παρουσίαση agentic GeoAI</span></span> – <a class="d-url" href="https://nickkoro21.github.io/geospatial-ai-pipeline-walkthrough/" target="_blank" rel="noopener">GitHub Pages · web app</a></li>
           </ul>
         </div>
@@ -1555,6 +1600,37 @@
       </div>
     </section>
 
+    <!-- ===================== Slide – Cost-effectiveness decision =========== -->
+    <section data-transition="slide">
+      <div class="kicker"><span class="lang-en">Closing · cost-effectiveness</span><span class="lang-el">Κλείσιμο · σχέση κόστους-οφέλους</span></div>
+      <h2 class="slide-title"><span class="lang-en">When is 7-Band <em>worth the extra cost</em>?</span><span class="lang-el">Πότε αξίζει το 7-Band <em>το πρόσθετο κόστος</em>;</span></h2>
+      <div class="cols s-50-50">
+        <div class="dcard d7 fragment" data-fragment-index="1">
+          <div class="dcard-h"><span class="lang-en">Invest in 7-Band when…</span><span class="lang-el">Επένδυσε σε 7-Band όταν…</span></div>
+          <ul>
+            <li><span class="lang-en">precise <b>building footprints</b> matter → <b>nDSM</b></span><span class="lang-el">χρειάζονται ακριβή <b>αποτυπώματα κτιρίων</b> → <b>nDSM</b></span></li>
+            <li><span class="lang-en"><b>vehicle</b> detection → <b>LWIR</b> (warm) + <b>nDSM</b> (raised ≈ 0.9 m)</span><span class="lang-el">ανίχνευση <b>οχημάτων</b> → <b>LWIR</b> (θερμά) + <b>nDSM</b> (ύψος ≈ 0,9 m)</span></li>
+            <li><span class="lang-en"><b>Shadow-Noise</b> separation → <b>LWIR</b></span><span class="lang-el">διαχωρισμός <b>Shadow-Noise</b> → <b>LWIR</b></span></li>
+          </ul>
+          <div class="dcard-note"><span class="lang-en">the three classes with a statistically significant gain.</span><span class="lang-el">οι τρεις κλάσεις με στατιστικά σημαντικό κέρδος.</span></div>
+        </div>
+        <div class="dcard drgb fragment" data-fragment-index="2">
+          <div class="dcard-h"><span class="lang-en">RGB is enough when…</span><span class="lang-el">Το RGB αρκεί όταν…</span></div>
+          <ul>
+            <li><span class="lang-en">the target is <b>vegetation</b> (Tree, Grass)</span><span class="lang-el">ο στόχος είναι <b>βλάστηση</b> (Tree, Grass)</span></li>
+            <li><span class="lang-en">objects are separable in the <b>visible spectrum</b></span><span class="lang-el">τα αντικείμενα διαχωρίζονται στο <b>ορατό φάσμα</b></span></li>
+            <li><span class="lang-en">a strong spatial backbone approaches 7-Band at <b>far lower cost</b></span><span class="lang-el">ισχυρό χωρικό backbone προσεγγίζει το 7-Band με <b>πολύ μικρότερο κόστος</b></span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="callout fragment fade-up" data-fragment-index="3" style="margin-top:.55em; margin-right:185px;"><span class="lang-en">Most of the advantage is <strong>geometric (nDSM)</strong> — an agency already producing DSM/DTM captures most of it <strong>even without a thermal sensor</strong>. The 7-Band cost: more data, heavier photogrammetry, a critical nDSM step.</span><span class="lang-el">Το μεγαλύτερο μέρος του πλεονεκτήματος είναι <strong>γεωμετρικό (nDSM)</strong> — μια υπηρεσία που ήδη παράγει DSM/DTM το κερδίζει σε μεγάλο βαθμό <strong>ακόμη και χωρίς θερμικό αισθητήρα</strong>. Το κόστος του 7-Band: περισσότερα δεδομένα, βαρύτερη φωτογραμμετρία, ένα κρίσιμο βήμα nDSM.</span></div>
+      <div class="slide-fn">§7.6 – πρακτικές &amp; επιχειρησιακές προεκτάσεις.</div>
+      <div class="logo-bar">
+        <img src="../assets/logos/tmima_logo.png" alt="Department">
+        <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
+      </div>
+    </section>
+
     <!-- ===================== Slide 53 – Limitations ======================= -->
     <section data-transition="slide">
       <div class="kicker"><span class="lang-en">Closing · limitations</span><span class="lang-el">Κλείσιμο · περιορισμοί</span></div>
@@ -1565,6 +1641,7 @@
         <li class="fragment"><span class="lang-en"><b>Severe class imbalance</b> – Bare Soil dominates; mitigated by focal + dice loss, but it bounds rare-class reliability.</span><span class="lang-el"><b>Έντονη ανισορροπία κλάσεων</b> – το Bare Soil κυριαρχεί· μετριάζεται με focal + dice loss, αλλά περιορίζει την αξιοπιστία στις σπάνιες κλάσεις.</span></li>
         <li class="fragment"><span class="lang-en"><b>Single architecture</b> – the spectral/spatial balance may differ for transformers or Mamba models.</span><span class="lang-el"><b>Μία μόνο αρχιτεκτονική</b> – η ισορροπία φάσματος/χώρου μπορεί να διαφέρει για transformers ή μοντέλα Mamba.</span></li>
         <li class="fragment"><span class="lang-en"><b>Plus technical caveats:</b> nDSM quality depends on photogrammetry; cross-environment inference is sensitive to preprocessing.</span><span class="lang-el"><b>Επιπλέον τεχνικές επιφυλάξεις:</b> η ποιότητα του nDSM εξαρτάται από τη φωτογραμμετρία· η συμπερασματολογία σε διαφορετικό περιβάλλον είναι ευαίσθητη στην προεπεξεργασία.</span></li>
+        <li class="fragment"><span class="lang-en"><b>No training seed</b> – ArcGIS "Train Deep Learning Model" exposes none, so one run per model (extra channels randomly initialised). <b>Neutralised by the paired design</b>: identical protocol + McNemar/bootstrap on the same 2,100 points → the ~10-pt gap is not seed-driven. (Eval sample: fixed seed = 1988.)</span><span class="lang-el"><b>Χωρίς training seed</b> – το ArcGIS «Train Deep Learning Model» δεν εκθέτει, άρα μία εκτέλεση ανά μοντέλο (τα επιπλέον κανάλια αρχικοποιήθηκαν τυχαία). <b>Εξουδετερώνεται από τον ζευγαρωτό σχεδιασμό</b>: ίδιο πρωτόκολλο + McNemar/bootstrap στα ίδια 2.100 σημεία → το χάσμα ~10 μον. δεν οφείλεται στο seed. (Δείγμα αξιολόγησης: σταθερό seed = 1988.)</span></li>
       </ul>
       <div class="slide-fn">Buda et al. (2018); Johnson &amp; Khoshgoftaar (2019); Hughes (1968); Ülkü et al. (2022).</div>
       <div class="logo-bar">
@@ -1582,13 +1659,13 @@
           <h3><span class="lang-en">Immediate extensions</span><span class="lang-el">Άμεσες επεκτάσεις</span></h3>
           <div class="anat-row fragment"><span class="lang-en">Multi-temporal &amp; multi-site capture → test the thermal advantage across seasons &amp; typologies.</span><span class="lang-el">Πολυχρονική &amp; πολυτοπική λήψη → έλεγχος του θερμικού πλεονεκτήματος σε εποχές &amp; τυπολογίες.</span></div>
           <div class="anat-row fragment"><span class="lang-en">Class-aware sampling for imbalance; re-run 7-Band vs RGB on <b>transformers / Mamba</b>.</span><span class="lang-el">Δειγματοληψία με επίγνωση κλάσεων για την ανισορροπία· επανάληψη 7-Band vs RGB σε <b>transformers / Mamba</b>.</span></div>
-          <div class="anat-row fragment"><span class="lang-en">Quantify per-channel contribution with <b>SHAP</b>; inject capture metadata via <b>FiLM</b>.</span><span class="lang-el">Ποσοτικοποίηση της συνεισφοράς ανά κανάλι με <b>SHAP</b>· εισαγωγή μεταδεδομένων λήψης μέσω <b>FiLM</b>.</span></div>
+          <div class="anat-row fragment"><span class="lang-en">Quantify per-channel contribution with <b>SHAP</b>; capture metadata via <b>FiLM</b>, not pseudo-bands (zero spatial variance wastes capacity).</span><span class="lang-el">Ποσοτικοποίηση συνεισφοράς ανά κανάλι με <b>SHAP</b>· μεταδεδομένα λήψης μέσω <b>FiLM</b>, όχι ψευδο-ζώνες (μηδενική χωρική διακύμανση = σπατάλη).</span></div>
         </div>
         <div class="anat-col">
           <h3><span class="lang-en">Long-term vision – agentic GeoAI</span><span class="lang-el">Μακροπρόθεσμο όραμα – agentic GeoAI</span></h3>
           <div class="anat-row fragment"><span class="lang-en">Vectors → <b>PostGIS + pgvector</b>; LLMs query via <b>MCP</b> (Text-to-Spatial-SQL, read-only).</span><span class="lang-el">Διανύσματα → <b>PostGIS + pgvector</b>· τα LLM ερωτούν μέσω <b>MCP</b> (Text-to-Spatial-SQL, μόνο ανάγνωση).</span></div>
           <div class="anat-row fragment"><span class="lang-en">A <b>multi-agent GeoRAG</b> analyst: orchestrator · retriever · sandbox modeller · reporter.</span><span class="lang-el">Ένας <b>πολυπρακτορικός GeoRAG</b> αναλυτής: orchestrator · retriever · sandbox modeller · reporter.</span></div>
-          <div class="anat-row fragment"><span class="lang-en">Guardrails: clarification loop, answer validator, observability + <b>LLM-as-a-judge</b>.</span><span class="lang-el">Δικλείδες ασφαλείας: βρόχος διευκρίνισης, επικυρωτής απαντήσεων, observability + <b>LLM-as-a-judge</b>.</span></div>
+          <div class="anat-row fragment"><span class="lang-en">Guardrails (fail-closed vs prompt-injection): clarification loop, answer validator, observability + <b>LLM-as-a-judge</b>.</span><span class="lang-el">Δικλείδες (fail-closed έναντι prompt-injection): βρόχος διευκρίνισης, επικυρωτής απαντήσεων, observability + <b>LLM-as-a-judge</b>.</span></div>
         </div>
       </div>
       <div class="linkcard fragment fade-up" style="margin-top:.3em; margin-right:190px;">
@@ -1614,11 +1691,11 @@
       <div class="meta">
         <span class="lang-en">
           <b>Nikolaos Koroniadis</b> · MSc “Geography &amp; Applied Geoinformatics”, University of the Aegean<br>
-          Supervisor: Assist. Prof. Dr. Christos Vasilakos · Mytilene, 2026
+          Supervisor: Assist. Prof. Dr. Christos Vasilakos · Mytilene &amp; Kalamata, 2026
         </span>
         <span class="lang-el">
           <b>Νικόλαος Κορωνιάδης</b> · ΠΜΣ «Γεωγραφία &amp; Εφαρμοσμένη Γεωπληροφορική», Πανεπιστήμιο Αιγαίου<br>
-          Επιβλέπων: Επίκ. Καθηγητής Δρ. Χρήστος Βασιλάκος · Μυτιλήνη, 2026
+          Επιβλέπων: Επίκ. Καθηγητής Δρ. Χρήστος Βασιλάκος · Μυτιλήνη &amp; Καλαμάτα, 2026
         </span>
       </div>
     </section>

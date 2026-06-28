@@ -504,6 +504,7 @@
   var TOC = [
     { s:'',                        t:'Title slide' },
     { s:'A · Introduction',        t:'The question & the roadmap' },
+    { s:'A · Introduction',        t:'Why extra channels help (prior work)' },
     { s:'B · Vision background',   t:'How vision learned to see' },
     { s:'B · Vision background',   t:'The 4 + 1 vision tasks' },
     { s:'B · Vision background',   t:'Why UAV mapping is harder' },
@@ -531,8 +532,9 @@
     { s:'G · Training',            t:'Same protocol, twice' },
     { s:'G · Training',            t:'Convergence & loss curves' },
     { s:'H · Evaluation design',   t:'How we measure a map' },
-    { s:'H · Evaluation design',   t:'Internal validation leads' },
     { s:'H · Evaluation design',   t:'Four independent methods' },
+    { s:'H · Evaluation design',   t:'Internal validation leads' },
+    { s:'H · Evaluation design',   t:'M2: failure → recovery' },
     { s:'H · Evaluation design',   t:'M4: the same 2,100 points' },
     { s:'I · Statistical proof',   t:'McNemar: where models disagree' },
     { s:'I · Statistical proof',   t:'Holm correction (animated)' },
@@ -552,6 +554,7 @@
     { s:'K · Map & tool',          t:'Road Analysis layout' },
     { s:'L · Conclusions',         t:'What you can use today' },
     { s:'L · Conclusions',         t:'Four questions, four answers' },
+    { s:'L · Conclusions',         t:'When is 7-Band worth it?' },
     { s:'L · Conclusions',         t:'What bounds these conclusions' },
     { s:'L · Conclusions',         t:'Two horizons (future work)' },
     { s:'L · Conclusions',         t:'Thank you' }
