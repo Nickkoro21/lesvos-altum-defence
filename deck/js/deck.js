@@ -91,7 +91,7 @@
     chips.forEach(function (c, i) {
       setTimeout(function () {
         if (document.querySelector('section.present') === sec) c.classList.add('shown');
-      }, i * 1500);
+      }, i * 1000);
     });
   }
   deck.on('fragmentshown', function (e) {
@@ -116,7 +116,27 @@
     paintHeatmap();
     setupNdsm();
     setupPipeline();
+    setupSpectralFilter();
   });
+
+  /* ===================== Spectral ±1σ isolate toggles =====================
+     Buttons under the spectral chart filter it: with ≥1 class active, only the
+     active classes' mean lines show, plus their translucent ±1σ band — letting
+     the presenter pick two "apparently different" classes and reveal that their
+     ±1σ bands overlap (so they are not truly separable by colour). */
+  function setupSpectralFilter() {
+    document.addEventListener('click', function (e) {
+      var btn = e.target.closest ? e.target.closest('.sig-btn') : null;
+      if (!btn) return;
+      var sec = btn.closest('section'); if (!sec) return;
+      var chart = sec.querySelector('.sig-chart'); if (!chart) return;
+      btn.classList.toggle('on');
+      var active = Array.prototype.map.call(sec.querySelectorAll('.sig-btn.on'), function (b) { return b.getAttribute('data-cls'); });
+      chart.classList.toggle('filtering', active.length > 0);
+      chart.querySelectorAll('.sigline').forEach(function (l) { l.classList.toggle('on', active.indexOf(l.getAttribute('data-cls')) >= 0); });
+      chart.querySelectorAll('.sigband').forEach(function (g) { g.classList.toggle('on', active.indexOf(g.getAttribute('data-cls')) >= 0); });
+    });
+  }
 
   /* ===================== Pipeline spotlight (slide "One shared pipeline") =====================
      Inlined SVG diagram; each of the 7 phase bullets is synced to the matching phase band of the
