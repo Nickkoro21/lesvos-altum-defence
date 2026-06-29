@@ -59,6 +59,21 @@ The deck also has live, interactive widgets (animated McNemar table, paired-boot
 - Vanilla JS for the language toggle, slide menu and animations (`deck/js/deck.js`)
 - Headless **Puppeteer** tooling for deterministic rendering & an overflow/overlap audit (`deck/shoot.js`, `deck/audit.js`)
 
+## Tools & methodology
+
+The full toolchain behind the study and this presentation:
+
+| Stage | Tools |
+|---|---|
+| **Data acquisition** | DJI **Matrice 350 RTK** UAV · **MicaSense Altum-PT** sensor (5 spectral bands + panchromatic + LWIR thermal) · RTK-fixed georeferencing (no GCPs) |
+| **Photogrammetry** | **ArcGIS Drone2Map** — three independent SfM projects (multispectral · panchromatic · thermal) → orthomosaics, DSM, DTM |
+| **GIS & data prep** | **ArcGIS Pro 3.6.2** — nDSM = DSM − DTM, 7-band composite stacking, polygon digitisation + topology, *Export Training Data* (Classified Tiles) |
+| **Deep learning** | **arcgis.learn** / **PyTorch** — DeepLabV3 + **ResNet-101** backbone + **PointRend**, trained twice (7-band vs RGB), Focal + Dice loss with mixup |
+| **Statistical evaluation** | Stratified paired sampling · **McNemar's** exact test · **Holm–Bonferroni** correction · **paired bootstrap** (10,000 resamples) · Cohen's κ — in Python |
+| **Post-processing** | **PostProcessing Toolbox** (ArcGIS Python toolbox, GPLv3) — raster → structured vectors + per-class analysis · **Jeffries–Matusita** separability toolbox |
+| **Delivery** | **GitHub Pages** · **Hugging Face Spaces** / **Gradio** · **Aegean SDI Portal** (`.dlpk` models) |
+| **Presentation** | **reveal.js 5.x** (offline) · **KaTeX** · vanilla JS · headless **Puppeteer** (render/audit) · built & iteratively refined with **Claude Code** (Anthropic) |
+
 ## Run locally
 
 ```bash
@@ -78,7 +93,7 @@ Supervisor: Assist. Prof. Dr. Christos Vasilakos · Mytilene, 2026
 
 - [Interactive methodology map](https://nickkoro21.github.io/lesvos-altum-segmentation/)
 - [7-Band vs RGB dashboard](https://nickkoro21.github.io/thesis-7band-vs-rgb/)
-- [PostProcessing Toolbox (ArcGIS, MIT)](https://github.com/Nickkoro21/PostProcessing-Toolbox)
+- [PostProcessing Toolbox (ArcGIS, GPLv3)](https://github.com/Nickkoro21/PostProcessing-Toolbox)
 - [Spectral Separability Explorer (JM, sensor-agnostic)](https://github.com/Nickkoro21/jm-separability-toolbox)
 - [Spectral 3D Explorer](https://huggingface.co/spaces/NickKoro21/spectral-3d-explorer)
 

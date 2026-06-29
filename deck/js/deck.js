@@ -528,10 +528,11 @@
     { s:'F · Class separability',  t:'Spectrum separates vegetation' },
     { s:'F · Class separability',  t:'Geometry isolates the built-up' },
     { s:'F · Class separability',  t:'Heat splits look-alike spectra' },
-    { s:'F · Class separability',  t:'Each dimension fixes a confusion' },
     { s:'G · Training',            t:'Same protocol, twice' },
-    { s:'G · Training',            t:'Convergence & loss curves' },
     { s:'H · Evaluation design',   t:'How we measure a map' },
+    { s:'G · Training',            t:'Convergence & loss curves' },
+    { s:'J · Results & anatomy',   t:'Confusion matrices' },
+    { s:'F · Class separability',  t:'Each dimension fixes a confusion' },
     { s:'H · Evaluation design',   t:'Four independent methods' },
     { s:'H · Evaluation design',   t:'Internal validation leads' },
     { s:'H · Evaluation design',   t:'M2: failure → recovery' },
@@ -540,9 +541,8 @@
     { s:'I · Statistical proof',   t:'Holm correction (animated)' },
     { s:'I · Statistical proof',   t:'Paired bootstrap (animated)' },
     { s:'J · Results & anatomy',   t:'7-Band wins every metric' },
-    { s:'J · Results & anatomy',   t:'Confusion matrices' },
     { s:'J · Results & anatomy',   t:'Per-class ΔF1 gains' },
-    { s:'J · Results & anatomy',   t:'Anatomy: geometry & heat (H3)' },
+    { s:'J · Results & anatomy',   t:'Anatomy: geometry & heat' },
     { s:'J · Results & anatomy',   t:'The Tree paradox' },
     { s:'K · Map & tool',          t:'One map, three readings' },
     { s:'K · Map & tool',          t:'Raster to vectors: the Toolbox' },
@@ -559,7 +559,7 @@
     { s:'L · Conclusions',         t:'Two horizons (future work)' },
     { s:'L · Conclusions',         t:'Thank you' }
   ];
-  var excluded = new Set();
+  var excluded = new Set([7, 39, 46, 48, 49]);
   var prevH = 0, explicitJump = -1;
   function firstIncluded(from, dir, total) {
     for (var i = from; i >= 0 && i < total; i += dir) { if (!excluded.has(i)) return i; }
@@ -600,7 +600,7 @@
       }
       var row = document.createElement('div'); row.className = 'nav-row'; row.setAttribute('data-h', h);
       var chk = document.createElement('input'); chk.type = 'checkbox'; chk.className = 'nav-chk';
-      chk.checked = true; chk.setAttribute('aria-label', 'Include in run-through');
+      chk.checked = !excluded.has(h); if (excluded.has(h)) row.classList.add('excluded'); chk.setAttribute('aria-label', 'Include in run-through');
       var jmp = document.createElement('button'); jmp.type = 'button'; jmp.className = 'nav-jump';
       jmp.textContent = item.t;
       row.appendChild(chk); row.appendChild(jmp); list.appendChild(row);

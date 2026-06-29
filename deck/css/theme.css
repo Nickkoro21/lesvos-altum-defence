@@ -289,6 +289,13 @@
 .reveal .cls-d { color: var(--ink-soft); font-size: .82em; }
 .reveal .cls-aside { padding-left: .4em; border-left: 1px solid var(--line); }
 .reveal .cls-aside-h { font-size: .62em; font-weight: 800; color: var(--ink); margin: .1em 0 .55em; }
+/* slide 20 — class table: one click, items cascade with 1s stagger */
+.reveal .cls-table .fragment.visible { animation: clsStagger 0.4s ease both; animation-delay: calc(var(--i, 0) * 0.25s); }
+@keyframes clsStagger { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+/* slide 23 — distribution bars: one click, 0.5s stagger (rows + their bar grow) */
+.reveal .dist-list .dist-row.fragment.visible { animation: distStagger 0.4s ease both; animation-delay: calc(var(--i, 0) * 0.5s); }
+@keyframes distStagger { from { opacity: 0; } to { opacity: 1; } }
+.reveal .dist-list .dist-row.fragment.visible .dist-bar i { transition-delay: calc(var(--i, 0) * 0.5s); }
 /* slide 32 — M2 two-bar recovery chart */
 .reveal .m2chart { width: 100%; height: auto; max-height: 320px; display: block; margin: 0 auto; font-variant-numeric: tabular-nums; }
 /* cost-effectiveness decision cards */
