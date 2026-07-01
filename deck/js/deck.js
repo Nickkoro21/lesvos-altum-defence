@@ -6,6 +6,8 @@
     margin: 0.05,
     minScale: 0.2,
     maxScale: 1.6,
+    viewDistance: 3,
+    mobileViewDistance: 1,        // phones: lazy-load only the adjacent slide's images
     hash: true,
     slideNumber: 'c/t',
     transition: 'slide',          // global; per-slide overridable via data-transition
@@ -118,7 +120,26 @@
     setupPipeline();
     setupSpectralFilter();
     setupSigMode();
+    setupRotateHint();
   });
+
+  /* Mobile-only portrait hint: dense academic slides scale down a lot in
+     portrait, so nudge viewers to landscape. CSS decides WHEN it shows
+     (phone + portrait); this only injects the element + a dismiss.
+     Bilingual via the existing .lang-en/.lang-el mechanism. Desktop: never shown. */
+  function setupRotateHint() {
+    var rh = document.createElement('div');
+    rh.id = 'rotateHint';
+    rh.innerHTML =
+      '<span class="rh-ico" aria-hidden="true">↻</span>' +
+      '<span><span class="lang-en">Rotate to landscape for the best view</span>' +
+      '<span class="lang-el">Καλύτερη προβολή σε οριζόντια — γύρνα το κινητό</span></span>' +
+      '<span class="rh-x" role="button" aria-label="Dismiss" tabindex="0">✕</span>';
+    document.body.appendChild(rh);
+    rh.querySelector('.rh-x').addEventListener('click', function (e) {
+      e.stopPropagation(); document.body.classList.add('rh-dismissed');
+    });
+  }
 
   /* Box ↔ Violin toggle for the nDSM / thermal signature charts. */
   function setupSigMode() {

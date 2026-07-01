@@ -621,3 +621,45 @@ body.lang-el .lang-en { display: none; }
 #navOverlay .nav-row.excluded .nav-jump {
   color: var(--ink-faint); text-decoration: line-through; text-decoration-color: var(--ink-faint);
 }
+
+/* ============================================================
+   MOBILE / PUBLICATION RESPONSIVE LAYER
+   Desktop (>768px viewport) is unaffected — these rules fire only on
+   phone-sized viewports. reveal.js scales the 1280x720 canvas to fit;
+   here we (1) surface the touch chrome (no :hover on touch), (2) enlarge
+   tap targets, (3) show a portrait "rotate" hint. Slide content, fragments
+   and animations are untouched. Pinch-zoom stays enabled for dense tables.
+   ============================================================ */
+#rotateHint { display: none; }              /* hidden everywhere except phone-portrait */
+
+@media (max-width: 768px) {
+  /* touch devices have no :hover — keep chrome controls clearly visible */
+  #navToggle, #langToggle { opacity: 0.9; background: rgba(255,255,255,0.94); }
+  #navToggle  { width: 44px; height: 44px; font-size: 21px; top: 10px; right: 10px; }
+  #langToggle { height: 44px; top: 10px; right: 62px; font-size: 14px; }
+  /* thumb-sized reveal navigation arrows */
+  .reveal .controls { right: 6px; bottom: 6px; }
+  .reveal .controls .navigate-left,
+  .reveal .controls .navigate-right,
+  .reveal .controls .navigate-up,
+  .reveal .controls .navigate-down { transform: scale(1.3); }
+}
+
+/* Portrait phones only: nudge to landscape (best legibility for the dense
+   academic slides). Non-blocking, dismissible, bilingual. */
+@media (max-width: 768px) and (orientation: portrait) {
+  #rotateHint {
+    display: flex; align-items: center; gap: 8px;
+    position: fixed; left: 50%; bottom: 14px; transform: translateX(-50%);
+    z-index: 70; max-width: 92vw;
+    padding: 9px 14px; border-radius: 999px;
+    background: rgba(26,29,33,0.9); color: #fff;
+    font-family: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+    font-size: 13px; line-height: 1.25; text-align: left;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.28);
+    -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px);
+  }
+  #rotateHint .rh-ico { font-size: 17px; }
+  #rotateHint .rh-x { margin-left: 2px; padding: 0 4px; cursor: pointer; color: rgba(255,255,255,0.72); font-weight: 700; }
+  body.rh-dismissed #rotateHint { display: none; }
+}

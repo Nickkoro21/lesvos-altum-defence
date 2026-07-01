@@ -21,7 +21,7 @@
 
     <!-- ============================ COVER (slide 1) ============================ -->
     <section class="cover" data-transition="fade">
-      <img class="cover-logo" src="../assets/logos/uaegean-university.png" alt="University of the Aegean">
+      <img class="cover-logo" data-src="../assets/logos/uaegean-university.png" alt="University of the Aegean">
       <div class="kicker"><span class="lang-en">MSc Thesis Defence · University of the Aegean · 2026</span><span class="lang-el">Υποστήριξη Διπλωματικής MSc · Πανεπιστήμιο Αιγαίου · 2026</span></div>
       <h1 class="fragment fade-up"><span class="lang-en">Development of a GIS Application for the Automatic Classification of Multispectral &amp; Thermal UAV Images Using Convolutional Neural Networks</span><span class="lang-el">Ανάπτυξη Εφαρμογής GIS για την Αυτόματη Ταξινόμηση Πολυφασματικών &amp; Θερμικών Εικόνων UAV με Συνελικτικά Νευρωνικά Δίκτυα</span></h1>
       <div class="meta fragment fade-up">
@@ -64,8 +64,8 @@
       </div>
       <div class="callout fragment fade-up" data-fragment-index="2" style="margin-top:2.8em; margin-right:185px; font-size:1.1em;"><span class="lang-en">Spoiler: the answer is <strong>YES</strong>.</span><span class="lang-el">Spoiler: η απάντηση είναι <strong>ΝΑΙ</strong>.</span></div>
       <div class="logo-bar">
-        <img src="../assets/logos/tmima_logo.png" alt="Department">
-        <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
+        <img data-src="../assets/logos/tmima_logo.png" alt="Department">
+        <img data-src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
       </div>
     </section>
 
@@ -81,8 +81,8 @@
       <div class="callout fragment fade-up" style="margin-top:.7em; margin-right:185px;"><span class="lang-en">So the gain is plausible <em>a priori</em>. We pre-registered the bar: <strong>ΔOA ≥ 5 pp</strong> with a 95% bootstrap CI excluding 0. Observed: <strong>+10.6</strong>.</span><span class="lang-el">Άρα το όφελος είναι εύλογο <em>εκ των προτέρων</em>. Ορίσαμε εκ των προτέρων το κατώφλι: <strong>ΔOA ≥ 5 μον.</strong> με 95% bootstrap CI που δεν περιλαμβάνει το 0. Παρατηρήθηκε: <strong>+10,6</strong>.</span></div>
       <div class="slide-fn">Audebert et al. (2018); Lee et al. (2023); Kemker et al. (2018).</div>
       <div class="logo-bar">
-        <img src="../assets/logos/tmima_logo.png" alt="Department">
-        <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
+        <img data-src="../assets/logos/tmima_logo.png" alt="Department">
+        <img data-src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
       </div>
     </section>
 
@@ -107,8 +107,8 @@
       <div class="callout fragment fade-up" style="margin-top:1.6em; margin-right:185px;"><span class="lang-en">Our stack sits at the end of this line: <strong>DeepLabV3 + PointRend</strong> on a <strong>ResNet-101</strong> backbone.</span><span class="lang-el">Η αρχιτεκτονική μας βρίσκεται στο τέλος αυτής της γραμμής: <strong>DeepLabV3 + PointRend</strong> πάνω σε backbone <strong>ResNet-101</strong>.</span></div>
       <div class="slide-fn">LeCun et al. (1989, 1998); Krizhevsky et al. (2012); Kirillov et al. (2020).</div>
       <div class="logo-bar">
-        <img src="../assets/logos/tmima_logo.png" alt="Department">
-        <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
+        <img data-src="../assets/logos/tmima_logo.png" alt="Department">
+        <img data-src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
       </div>
     </section>
 
@@ -121,27 +121,27 @@
            Semantic (our task) pops LAST with the OUR CHOICE badge. -->
       <div class="task-imgs">
         <div class="task-img-card fragment" data-fragment-index="1">
-          <img src="../assets/figures_canonical/task_object_detection.png" alt="Object detection on an aerial scene">
+          <img data-src="../assets/figures_canonical/task_object_detection.png" alt="Object detection on an aerial scene">
           <div class="ti-body"><div class="ti-title"><span class="lang-en">Object detection</span><span class="lang-el">Ανίχνευση αντικειμένων</span></div><div class="ti-desc"><span class="lang-en">Bounding boxes + confidence – <b>where</b> things are, not their pixels.</span><span class="lang-el">Πλαίσια οριοθέτησης + βεβαιότητα – <b>πού</b> βρίσκονται, όχι τα pixels τους.</span></div></div>
         </div>
         <div class="task-img-card chosen fragment" data-fragment-index="2">
-          <img src="../assets/figures_canonical/task_semantic_segmentation.png" alt="Semantic segmentation on an aerial scene">
+          <img data-src="../assets/figures_canonical/task_semantic_segmentation.png" alt="Semantic segmentation on an aerial scene">
           <div class="ti-body"><div class="ti-title"><span class="lang-en">Semantic segmentation</span><span class="lang-el">Σημασιολογική κατάτμηση</span></div><div class="ti-desc"><span class="lang-en">A <b>class for every pixel</b> – no separate objects.</span><span class="lang-el">Μία <b>κλάση για κάθε pixel</b> – χωρίς ξεχωριστά αντικείμενα.</span></div><span class="ti-tag fragment" data-fragment-index="6"><span class="lang-en">OUR CHOICE</span><span class="lang-el">η επιλογή μας</span></span></div>
         </div>
         <div class="task-img-card fragment" data-fragment-index="3">
-          <img src="../assets/figures_canonical/task_instance_segmentation.png" alt="Instance segmentation on an aerial scene">
+          <img data-src="../assets/figures_canonical/task_instance_segmentation.png" alt="Instance segmentation on an aerial scene">
           <div class="ti-body"><div class="ti-title"><span class="lang-en">Instance segmentation</span><span class="lang-el">Κατάτμηση στιγμιοτύπων</span></div><div class="ti-desc"><span class="lang-en">Pixels <b>+ separate instances</b> – each object kept apart.</span><span class="lang-el">Pixels <b>+ ξεχωριστά στιγμιότυπα</b> – κάθε αντικείμενο χωριστά.</span></div></div>
         </div>
         <div class="task-img-card fragment" data-fragment-index="4">
-          <img src="../assets/figures_canonical/task_panoptic_segmentation.png" alt="Panoptic segmentation on an aerial scene">
+          <img data-src="../assets/figures_canonical/task_panoptic_segmentation.png" alt="Panoptic segmentation on an aerial scene">
           <div class="ti-body"><div class="ti-title"><span class="lang-en">Panoptic</span><span class="lang-el">Πανοπτική</span></div><div class="ti-desc"><span class="lang-en">Semantic <b>+</b> instance, unified – every pixel <i>and</i> every object.</span><span class="lang-el">Σημασιολογική <b>+</b> στιγμιοτύπων, ενοποιημένες – κάθε pixel <i>και</i> κάθε αντικείμενο.</span></div></div>
         </div>
       </div>
       <div class="callout fragment fade-up" data-fragment-index="5" style="margin-top:.7em; margin-right:185px;"><span class="lang-en">The fifth task – <b>image classification</b> (one label per whole image) – is the trivial case. Land cover is fundamentally a <strong>per-pixel</strong> question → <strong>semantic segmentation</strong> is the natural fit.</span><span class="lang-el">Η πέμπτη εργασία – <b>ταξινόμηση εικόνας</b> (μία ετικέτα ανά εικόνα) – είναι η τετριμμένη περίπτωση. Η κάλυψη γης είναι κατ’ ουσίαν ζήτημα <strong>ανά pixel</strong> → η <strong>σημασιολογική κατάτμηση</strong> ταιριάζει φυσικά.</span></div>
       <div class="slide-fn">Kirillov et al. (2019); He et al. (2017); Ren et al. (2017); Redmon et al. (2016).</div>
       <div class="logo-bar">
-        <img src="../assets/logos/tmima_logo.png" alt="Department">
-        <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
+        <img data-src="../assets/logos/tmima_logo.png" alt="Department">
+        <img data-src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
       </div>
     </section>
 
@@ -151,7 +151,7 @@
       <h2 class="slide-title"><span class="lang-en">Mapping land cover from a UAV is <em>harder</em> than benchmark vision</span><span class="lang-el">Η χαρτογράφηση κάλυψης γης από UAV είναι <em>πιο δύσκολη</em> από τα benchmark όρασης</span></h2>
       <div class="cols s-40-60">
         <div class="fig">
-          <img src="../assets/from_docx/Eik01_docx.png" alt="Computer-vision approaches for UAV land-cover mapping">
+          <img data-src="../assets/from_docx/Eik01_docx.png" alt="Computer-vision approaches for UAV land-cover mapping">
           <div class="figcap"><span class="lang-en">Computer-vision approaches for UAV land-cover mapping.</span><span class="lang-el">Προσεγγίσεις υπολογιστικής όρασης για χαρτογράφηση κάλυψης γης με UAV.</span></div>
         </div>
         <div>
@@ -164,8 +164,8 @@
         </div>
       </div>
       <div class="logo-bar">
-        <img src="../assets/logos/tmima_logo.png" alt="Department">
-        <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
+        <img data-src="../assets/logos/tmima_logo.png" alt="Department">
+        <img data-src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
       </div>
     </section>
 
@@ -187,8 +187,8 @@
       </table>
       <div class="callout fragment fade-up" data-fragment-index="6" style="margin-top:.5em; margin-right:185px;"><span class="lang-en">Land cover has <strong>no countable instances</strong> – every pixel just needs a class. Semantic segmentation delivers exactly that, at the lowest complexity.</span><span class="lang-el">Η κάλυψη γης <strong>δεν έχει μετρήσιμα στιγμιότυπα</strong> – κάθε pixel χρειάζεται απλώς μία κλάση. Η σημασιολογική κατάτμηση το προσφέρει ακριβώς αυτό, με τη μικρότερη πολυπλοκότητα.</span></div>
       <div class="logo-bar">
-        <img src="../assets/logos/tmima_logo.png" alt="Department">
-        <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
+        <img data-src="../assets/logos/tmima_logo.png" alt="Department">
+        <img data-src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
       </div>
     </section>
 
@@ -202,7 +202,7 @@
       <h2 class="slide-title"><span class="lang-en">Residual connections make <em>very deep</em> CNNs trainable</span><span class="lang-el">Οι υπολειμματικές συνδέσεις κάνουν εκπαιδεύσιμα τα <em>πολύ βαθιά</em> CNN</span></h2>
       <div class="cols s-40-60">
         <div class="fig">
-          <img src="../assets/from_docx/Eik03_docx.png" alt="ResNet residual block">
+          <img data-src="../assets/from_docx/Eik03_docx.png" alt="ResNet residual block">
           <div class="figcap"><span class="lang-en">Residual (skip) connection – the building block of ResNet.</span><span class="lang-el">Υπολειμματική σύνδεση (skip) – το δομικό στοιχείο του ResNet.</span></div>
         </div>
         <div>
@@ -216,8 +216,8 @@
       </div>
       <div class="slide-fn">He et al. (2016).</div>
       <div class="logo-bar">
-        <img src="../assets/logos/tmima_logo.png" alt="Department">
-        <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
+        <img data-src="../assets/logos/tmima_logo.png" alt="Department">
+        <img data-src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
       </div>
     </section>
 
@@ -227,7 +227,7 @@
       <h2 class="slide-title"><span class="lang-en">DeepLab keeps <em>resolution and context together</em>, via atrous convolution &amp; ASPP</span><span class="lang-el">Το DeepLab κρατά μαζί <em>ανάλυση και συγκείμενο</em>, μέσω διεσταλμένης συνέλιξης &amp; ASPP</span></h2>
       <div class="cols s-50-50">
         <div class="fig">
-          <img src="../assets/from_docx/Eik06_docx.jpg" alt="DeepLab family evolution">
+          <img data-src="../assets/from_docx/Eik06_docx.jpg" alt="DeepLab family evolution">
           <div class="figcap"><span class="lang-en">Evolution of the DeepLab family (v1 → v3+).</span><span class="lang-el">Η εξέλιξη της οικογένειας DeepLab (v1 → v3+).</span></div>
         </div>
         <div>
@@ -242,8 +242,8 @@
       </div>
       <div class="slide-fn">Chen et al. (2015, 2017, 2018a, 2018b).</div>
       <div class="logo-bar">
-        <img src="../assets/logos/tmima_logo.png" alt="Department">
-        <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
+        <img data-src="../assets/logos/tmima_logo.png" alt="Department">
+        <img data-src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
       </div>
     </section>
 
@@ -274,8 +274,8 @@
       <div class="small muted fragment" style="margin-top:.4em;"><span class="lang-en"><b>Why not a plain U-Net / SegNet encoder-decoder?</b> At 4.52 cm GSD the scene runs from car-scale objects to building-scale structures — ASPP's multi-scale context + native &gt;3-channel input fit it better.</span><span class="lang-el"><b>Γιατί όχι απλό U-Net / SegNet encoder-decoder;</b> Στα 4,52 cm GSD η σκηνή εκτείνεται από αντικείμενα κλίμακας οχήματος έως κτίρια — το πολυκλιμακωτό συγκείμενο του ASPP + η εγγενής υποστήριξη &gt;3 καναλιών ταιριάζουν καλύτερα.</span></div>
       <div class="slide-fn">Chen et al. (2017); Kirillov et al. (2020).</div>
       <div class="logo-bar">
-        <img src="../assets/logos/tmima_logo.png" alt="Department">
-        <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
+        <img data-src="../assets/logos/tmima_logo.png" alt="Department">
+        <img data-src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
       </div>
     </section>
 
@@ -293,8 +293,8 @@
       </div>
       <div class="slide-fn">Marmanis et al. (2016); Penatti et al. (2015).</div>
       <div class="logo-bar">
-        <img src="../assets/logos/tmima_logo.png" alt="Department">
-        <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
+        <img data-src="../assets/logos/tmima_logo.png" alt="Department">
+        <img data-src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
       </div>
     </section>
 
@@ -308,7 +308,7 @@
       <h2 class="slide-title"><span class="lang-en">One sensor, <em>three subsystems</em>: multispectral, panchromatic &amp; thermal</span><span class="lang-el">Ένας αισθητήρας, <em>τρία υποσυστήματα</em>: πολυφασματικό, παγχρωματικό &amp; θερμικό</span></h2>
       <div class="cols s-50-50">
         <div class="fig">
-          <img src="../assets/from_docx/Eik02_docx.jpg" alt="Spectral bands of the MicaSense Altum-PT">
+          <img data-src="../assets/from_docx/Eik02_docx.jpg" alt="Spectral bands of the MicaSense Altum-PT">
           <div class="figcap"><span class="lang-en">Spectral coverage: 5 MS bands (VNIR), panchromatic (visible), thermal LWIR.</span><span class="lang-el">Φασματική κάλυψη: 5 ζώνες MS (VNIR), παγχρωματική (ορατό), θερμική LWIR.</span></div>
         </div>
         <div>
@@ -322,8 +322,8 @@
       </div>
       <div class="slide-fn">MicaSense (2022); Cottrell et al. (2024).</div>
       <div class="logo-bar">
-        <img src="../assets/logos/tmima_logo.png" alt="Department">
-        <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
+        <img data-src="../assets/logos/tmima_logo.png" alt="Department">
+        <img data-src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
       </div>
     </section>
 
@@ -333,7 +333,7 @@
       <h2 class="slide-title"><span class="lang-en">Pamfila, Lesvos: a small scene that holds <em>all seven classes</em></span><span class="lang-el">Παμφίλα, Λέσβος: μια μικρή σκηνή που περιέχει <em>και τις επτά κλάσεις</em></span></h2>
       <div class="cols s-65-35">
         <div class="fig">
-          <img src="../assets/from_docx/Eik10_docx.png" alt="Study area: Lesvos, Mytilene, Pamfila (three panels)">
+          <img data-src="../assets/from_docx/Eik10_docx.png" alt="Study area: Lesvos, Mytilene, Pamfila (three panels)">
           <div class="figcap"><span class="lang-en">Location: Lesvos → Mytilene → Pamfila (≈ 4 km north of the city).</span><span class="lang-el">Θέση: Λέσβος → Μυτιλήνη → Παμφίλα (≈ 4 km βόρεια της πόλης).</span></div>
         </div>
         <div>
@@ -346,8 +346,8 @@
         </div>
       </div>
       <div class="logo-bar">
-        <img src="../assets/logos/tmima_logo.png" alt="Department">
-        <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
+        <img data-src="../assets/logos/tmima_logo.png" alt="Department">
+        <img data-src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
       </div>
     </section>
 
@@ -372,8 +372,8 @@
       <div class="callout fragment fade-up" style="margin-top:.45em; margin-right:185px;"><span class="lang-en"><strong>No GCPs or checkpoints</strong>: tie-point RMSE &lt; 0.4 px is the <em>internal</em> fit. Absolute geolocation comes from the <strong>RTK fix</strong> — GPSXYAccuracy ≈ <strong>1.5 cm</strong>, GPSZAccuracy ≈ <strong>2.6 cm</strong> per image (DJI Matrice 350 RTK).</span><span class="lang-el"><strong>Χωρίς GCPs ή checkpoints</strong>: το RMSE tie-point &lt; 0,4 px είναι η <em>εσωτερική</em> προσαρμογή. Η απόλυτη γεωαναφορά προκύπτει από το <strong>RTK fix</strong> — GPSXYAccuracy ≈ <strong>1,5 cm</strong>, GPSZAccuracy ≈ <strong>2,6 cm</strong> ανά εικόνα (DJI Matrice 350 RTK).</span></div>
       <div class="slide-fn">ESRI (n.d.) – ArcGIS Drone2Map processing reports.</div>
       <div class="logo-bar">
-        <img src="../assets/logos/tmima_logo.png" alt="Department">
-        <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
+        <img data-src="../assets/logos/tmima_logo.png" alt="Department">
+        <img data-src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
       </div>
     </section>
 
@@ -389,8 +389,8 @@
         <div class="ns-row fragment"><span class="ns-tag">FLIR</span><span class="ns-desc"><span class="lang-en">Thermal (LWIR) calibration parameters for the temperature band.</span><span class="lang-el">Παράμετροι θερμικής (LWIR) βαθμονόμησης για τη ζώνη θερμοκρασίας.</span></span></div>
       </div>
       <div class="logo-bar">
-        <img src="../assets/logos/tmima_logo.png" alt="Department">
-        <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
+        <img data-src="../assets/logos/tmima_logo.png" alt="Department">
+        <img data-src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
       </div>
     </section>
 
@@ -403,8 +403,8 @@
         <div class="figcap"><span class="lang-en">Three independent Drone2Map projects (multispectral · panchromatic · thermal) run the same RTK-fixed SfM workflow → orthomosaics, a DSM and a DTM. Common: 1/8→1× scale · Matching Neighborhood Small · WGS84 UTM 35N + EGM96.</span><span class="lang-el">Τρία ανεξάρτητα projects Drone2Map (πολυφασματικό · παγχρωματικό · θερμικό) με την ίδια ροή SfM (RTK) → ορθομωσαϊκά, ένα DSM κι ένα DTM. Κοινά: κλίμακα 1/8→1× · Matching Neighborhood Small · WGS84 UTM 35N + EGM96.</span></div>
       </div>
       <div class="logo-bar">
-        <img src="../assets/logos/tmima_logo.png" alt="Department">
-        <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
+        <img data-src="../assets/logos/tmima_logo.png" alt="Department">
+        <img data-src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
       </div>
     </section>
 
@@ -417,8 +417,8 @@
         <div class="figcap"><span class="lang-en">nDSM = DSM − DTM, clip negatives, then stack 5 spectral + nDSM + thermal into the 7-band composite, enriched with PAM metadata (ArcGIS Pro 3.6.2).</span><span class="lang-el">nDSM = DSM − DTM, αποκοπή αρνητικών, και μετά στοίβαξη 5 φασματικών + nDSM + θερμικού στο σύνθετο 7 καναλιών, με εμπλουτισμό PAM metadata (ArcGIS Pro 3.6.2).</span></div>
       </div>
       <div class="logo-bar">
-        <img src="../assets/logos/tmima_logo.png" alt="Department">
-        <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
+        <img data-src="../assets/logos/tmima_logo.png" alt="Department">
+        <img data-src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
       </div>
     </section>
 
@@ -443,8 +443,8 @@
       </div>
       <div class="callout fragment fade-up" style="margin-top:.2em; margin-right:185px;"><span class="lang-en">Input: the <strong>7-band raster</strong>, not RGB.</span><span class="lang-el">Είσοδος: το <strong>raster 7 καναλιών</strong>, όχι RGB.</span></div>
       <div class="logo-bar">
-        <img src="../assets/logos/tmima_logo.png" alt="Department">
-        <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
+        <img data-src="../assets/logos/tmima_logo.png" alt="Department">
+        <img data-src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
       </div>
     </section>
 
@@ -512,8 +512,8 @@
         </div>
       </div>
       <div class="logo-bar">
-        <img src="../assets/logos/tmima_logo.png" alt="Department">
-        <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
+        <img data-src="../assets/logos/tmima_logo.png" alt="Department">
+        <img data-src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
       </div>
     </section>
 
@@ -522,13 +522,13 @@
       <div class="kicker"><span class="lang-en">Classes · the training sample</span><span class="lang-el">Κλάσεις · το δείγμα εκπαίδευσης</span></div>
       <h2 class="slide-title"><span class="lang-en">Each sample is an <em>image chip paired with a per-pixel label mask</em></span><span class="lang-el">Κάθε δείγμα είναι ένα <em>image chip σε ζεύγος με μια μάσκα ετικετών ανά pixel</em></span></h2>
       <div class="centerfig">
-        <img src="../assets/figures_canonical/Eik19_chip_mask_example.png" alt="Real image chip and its label mask from the dataset" style="max-height:372px;">
+        <img data-src="../assets/figures_canonical/Eik19_chip_mask_example.png" alt="Real image chip and its label mask from the dataset" style="max-height:372px;">
         <div class="figcap"><span class="lang-en">A real chip / mask pair from the training set – each mask pixel carries a class code (1–7).</span><span class="lang-el">Ένα πραγματικό ζεύγος chip / μάσκας από το σύνολο εκπαίδευσης – κάθε pixel της μάσκας φέρει έναν κωδικό κλάσης (1–7).</span></div>
       </div>
       <div class="callout fragment fade-up" style="margin-top:.45em; margin-right:185px;"><span class="lang-en">DeepLab needs the <strong>Classified Tiles</strong> format: each chip ships with a mask whose pixel values <em>are</em> the class labels.</span><span class="lang-el">Το DeepLab χρειάζεται τη μορφή <strong>Classified Tiles</strong>: κάθε chip συνοδεύεται από μια μάσκα της οποίας οι τιμές pixel <em>είναι</em> οι ετικέτες κλάσεων.</span></div>
       <div class="logo-bar">
-        <img src="../assets/logos/tmima_logo.png" alt="Department">
-        <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
+        <img data-src="../assets/logos/tmima_logo.png" alt="Department">
+        <img data-src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
       </div>
     </section>
 
@@ -552,8 +552,8 @@
       </div>
       <div class="slide-fn">ESRI (n.d.); Congalton &amp; Green (2019); Zhang et al. (2018).</div>
       <div class="logo-bar">
-        <img src="../assets/logos/tmima_logo.png" alt="Department">
-        <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
+        <img data-src="../assets/logos/tmima_logo.png" alt="Department">
+        <img data-src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
       </div>
     </section>
 
@@ -585,8 +585,8 @@
       </div>
       <div class="slide-fn">Buda et al. (2018); Johnson &amp; Khoshgoftaar (2019).</div>
       <div class="logo-bar">
-        <img src="../assets/logos/tmima_logo.png" alt="Department">
-        <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
+        <img data-src="../assets/logos/tmima_logo.png" alt="Department">
+        <img data-src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
       </div>
     </section>
 
@@ -614,8 +614,8 @@
         </div>
       </div>
       <div class="logo-bar">
-        <img src="../assets/logos/tmima_logo.png" alt="Department">
-        <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
+        <img data-src="../assets/logos/tmima_logo.png" alt="Department">
+        <img data-src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
       </div>
     </section>
 
@@ -639,8 +639,8 @@
         </div>
       </div>
       <div class="logo-bar">
-        <img src="../assets/logos/tmima_logo.png" alt="Department">
-        <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
+        <img data-src="../assets/logos/tmima_logo.png" alt="Department">
+        <img data-src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
       </div>
     </section>
 
@@ -664,8 +664,8 @@
         </div>
       </div>
       <div class="logo-bar">
-        <img src="../assets/logos/tmima_logo.png" alt="Department">
-        <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
+        <img data-src="../assets/logos/tmima_logo.png" alt="Department">
+        <img data-src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
       </div>
     </section>
 
@@ -694,8 +694,8 @@
       </div>
       <div class="slide-fn">Lin et al. (2017); Milletari et al. (2016); Sudre et al. (2017).</div>
       <div class="logo-bar">
-        <img src="../assets/logos/tmima_logo.png" alt="Department">
-        <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
+        <img data-src="../assets/logos/tmima_logo.png" alt="Department">
+        <img data-src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
       </div>
     </section>
 
@@ -713,8 +713,8 @@
       </div>
       <div class="slide-fn">Congalton &amp; Green (2019); Cohen (1960).</div>
       <div class="logo-bar">
-        <img src="../assets/logos/tmima_logo.png" alt="Department">
-        <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
+        <img data-src="../assets/logos/tmima_logo.png" alt="Department">
+        <img data-src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
       </div>
     </section>
 
@@ -725,11 +725,11 @@
       <div class="cols s-50-50">
         <div class="fig">
           <div class="small" style="font-weight:700;color:var(--c-7band);margin-bottom:.2em;">7-Band</div>
-          <img src="../assets/figures_canonical/Eik22_loss_7band.png" alt="7-Band training and validation loss per epoch">
+          <img data-src="../assets/figures_canonical/Eik22_loss_7band.png" alt="7-Band training and validation loss per epoch">
         </div>
         <div class="fig">
           <div class="small" style="font-weight:700;color:var(--c-rgb);margin-bottom:.2em;"><span class="lang-en">RGB baseline</span><span class="lang-el">RGB (βάση)</span></div>
-          <img src="../assets/figures_canonical/Eik23_loss_RGB.png" alt="RGB training and validation loss per epoch">
+          <img data-src="../assets/figures_canonical/Eik23_loss_RGB.png" alt="RGB training and validation loss per epoch">
         </div>
       </div>
       <div class="cols s-60-40" style="margin-top:.25em;">
@@ -744,8 +744,8 @@
         </div>
       </div>
       <div class="logo-bar">
-        <img src="../assets/logos/tmima_logo.png" alt="Department">
-        <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
+        <img data-src="../assets/logos/tmima_logo.png" alt="Department">
+        <img data-src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
       </div>
     </section>
 
@@ -809,8 +809,8 @@
       </div>
       <div class="slide-fn">Congalton &amp; Green (2019). · M4 paired evaluation, n = 2,100 (300 / class).</div>
       <div class="logo-bar">
-        <img src="../assets/logos/tmima_logo.png" alt="Department">
-        <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
+        <img data-src="../assets/logos/tmima_logo.png" alt="Department">
+        <img data-src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
       </div>
     </section>
 
@@ -837,8 +837,8 @@
       </div>
       <div class="slide-fn">Bruzzone &amp; Serpico (2000).</div>
       <div class="logo-bar">
-        <img src="../assets/logos/tmima_logo.png" alt="Department">
-        <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
+        <img data-src="../assets/logos/tmima_logo.png" alt="Department">
+        <img data-src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
       </div>
     </section>
 
@@ -854,8 +854,8 @@
       </div>
       <div class="callout fragment fade-up" data-fragment-index="5" style="margin-top:.9em; margin-right:185px;"><span class="lang-en">All four agree – the advantage is <strong>structural</strong>, not a sampling fluke. <strong>M4</strong> is the one we then test statistically.</span><span class="lang-el">Και οι τέσσερις συμφωνούν – το πλεονέκτημα είναι <strong>δομικό</strong>, όχι τυχαίο της δειγματοληψίας. Το <strong>M4</strong> είναι αυτό που μετά ελέγχουμε στατιστικά.</span></div>
       <div class="logo-bar">
-        <img src="../assets/logos/tmima_logo.png" alt="Department">
-        <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
+        <img data-src="../assets/logos/tmima_logo.png" alt="Department">
+        <img data-src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
       </div>
     </section>
 
@@ -877,8 +877,8 @@
       </table>
       <div class="callout fragment fade-up" style="margin-top:.5em; margin-right:185px;"><span class="lang-en">These are <strong>internal</strong> metrics – computed separately per model, <em>not</em> on the same points. Encouraging, but not yet a fair test. The paired comparison (M4) settles it.</span><span class="lang-el">Αυτές είναι <strong>εσωτερικές</strong> μετρικές – υπολογισμένες ξεχωριστά ανά μοντέλο, <em>όχι</em> στα ίδια σημεία. Ενθαρρυντικές, μα όχι ακόμη δίκαιη δοκιμή. Η ζευγαρωτή σύγκριση (M4) το κρίνει.</span></div>
       <div class="logo-bar">
-        <img src="../assets/logos/tmima_logo.png" alt="Department">
-        <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
+        <img data-src="../assets/logos/tmima_logo.png" alt="Department">
+        <img data-src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
       </div>
     </section>
 
@@ -901,8 +901,8 @@
         </div>
       </div>
       <div class="logo-bar">
-        <img src="../assets/logos/tmima_logo.png" alt="Department">
-        <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
+        <img data-src="../assets/logos/tmima_logo.png" alt="Department">
+        <img data-src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
       </div>
     </section>
 
@@ -936,8 +936,8 @@
       </div>
       <div class="slide-fn">Congalton &amp; Green (2019); Olofsson et al. (2014); Stehman (2014).</div>
       <div class="logo-bar">
-        <img src="../assets/logos/tmima_logo.png" alt="Department">
-        <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
+        <img data-src="../assets/logos/tmima_logo.png" alt="Department">
+        <img data-src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
       </div>
     </section>
 
@@ -1000,8 +1000,8 @@
 
       <div class="slide-fn">McNemar (1947); Edwards (1948); Foody (2004); Dietterich (1998).</div>
       <div class="logo-bar">
-        <img src="../assets/logos/tmima_logo.png" alt="Department">
-        <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
+        <img data-src="../assets/logos/tmima_logo.png" alt="Department">
+        <img data-src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
       </div>
     </section>
 
@@ -1069,8 +1069,8 @@
 
       <div class="slide-fn">Holm (1979).</div>
       <div class="logo-bar">
-        <img src="../assets/logos/tmima_logo.png" alt="Department">
-        <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
+        <img data-src="../assets/logos/tmima_logo.png" alt="Department">
+        <img data-src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
       </div>
     </section>
 
@@ -1106,8 +1106,8 @@
       <div class="callout fragment fade-up" data-fragment-index="3" style="margin-top:.25em; margin-right:185px;"><span class="lang-en">All three 95% CIs lie <strong>entirely above 0</strong> → <strong>H₀ rejected</strong>.</span><span class="lang-el">Και τα τρία 95% CI βρίσκονται <strong>εξ ολοκλήρου πάνω από το 0</strong> → <strong>η H₀ απορρίπτεται</strong>.</span></div>
       <div class="slide-fn">Efron &amp; Tibshirani (1993).</div>
       <div class="logo-bar">
-        <img src="../assets/logos/tmima_logo.png" alt="Department">
-        <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
+        <img data-src="../assets/logos/tmima_logo.png" alt="Department">
+        <img data-src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
       </div>
     </section>
 
@@ -1134,8 +1134,8 @@
       <div class="small muted fragment" style="margin:.15em 0 0;"><span class="lang-en">Cohen's κ scale (Landis &amp; Koch 1977): ≥ 0.81 = "almost perfect" — RGB (0.82) already clears it, yet 7-Band still adds +10.8 κ-points.</span><span class="lang-el">Κλίμακα Cohen's κ (Landis &amp; Koch 1977): ≥ 0,81 = «σχεδόν τέλεια» — το RGB (0,82) ήδη πληροί, κι όμως το 7-Band προσθέτει +10,8 μονάδες κ.</span></div>
       <div class="slide-fn"><span class="lang-en">Paired stratified evaluation (M4), n = 2,100; identical points for both models. 34/2,100 points fall outside the RGB raster extent (NoData) → counted as RGB errors.</span><span class="lang-el">Ζευγαρωτή στρωματοποιημένη αξιολόγηση (M4), n = 2.100· ίδια σημεία και για τα δύο μοντέλα. 34/2.100 σημεία πέφτουν εκτός της έκτασης του RGB raster (NoData) → μετρήθηκαν ως σφάλματα RGB.</span></div>
       <div class="logo-bar">
-        <img src="../assets/logos/tmima_logo.png" alt="Department">
-        <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
+        <img data-src="../assets/logos/tmima_logo.png" alt="Department">
+        <img data-src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
       </div>
     </section>
 
@@ -1190,8 +1190,8 @@
       </div>
       <div class="slide-fn">McNemar (1947); Holm (1979).</div>
       <div class="logo-bar">
-        <img src="../assets/logos/tmima_logo.png" alt="Department">
-        <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
+        <img data-src="../assets/logos/tmima_logo.png" alt="Department">
+        <img data-src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
       </div>
     </section>
 
@@ -1215,8 +1215,8 @@
       <div class="callout fragment fade-up" data-fragment-index="6" style="margin-top:.6em; margin-right:185px;"><span class="lang-en"><strong>H3 overturned:</strong> the multispectral advantage is driven by <strong>nDSM (geometry)</strong> and <strong>LWIR (thermal)</strong> – the non-vegetation, structure-and-heat classes – not by spectrum or vegetation indices.</span><span class="lang-el"><strong>Η H3 ανατρέπεται:</strong> το πολυφασματικό πλεονέκτημα οφείλεται στο <strong>nDSM (γεωμετρία)</strong> και στο <strong>LWIR (θερμότητα)</strong> – στις κλάσεις δομής-και-θερμότητας, όχι βλάστησης – όχι στο φάσμα ή σε δείκτες βλάστησης.</span></div>
       <div class="slide-fn">Audebert et al. (2018); Li et al. (2023); Buyukdemircioglu et al. (2022); Khoshboresh Masouleh &amp; Shah-Hosseini (2019); Morrison et al. (2021); Li et al. (2015).</div>
       <div class="logo-bar">
-        <img src="../assets/logos/tmima_logo.png" alt="Department">
-        <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
+        <img data-src="../assets/logos/tmima_logo.png" alt="Department">
+        <img data-src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
       </div>
     </section>
 
@@ -1246,8 +1246,8 @@
       </div>
       <div class="slide-fn">Farhadpour et al. (2024); Foody (2020).</div>
       <div class="logo-bar">
-        <img src="../assets/logos/tmima_logo.png" alt="Department">
-        <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
+        <img data-src="../assets/logos/tmima_logo.png" alt="Department">
+        <img data-src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
       </div>
     </section>
 
@@ -1260,13 +1260,13 @@
       <div class="kicker"><span class="lang-en">Map &amp; tool · the composite map</span><span class="lang-el">Χάρτης &amp; εργαλείο · ο σύνθετος χάρτης</span></div>
       <h2 class="slide-title"><span class="lang-en">One map, <em>three readings</em>: height, land cover, and heat</span><span class="lang-el">Ένας χάρτης, <em>τρεις αναγνώσεις</em>: ύψος, κάλυψη γης και θερμότητα</span></h2>
       <div class="bigfig">
-        <img src="../assets/results/Eik29_composite_map.png" alt="Composite land-cover map of Pamfila" style="max-height:446px;">
+        <img data-src="../assets/results/Eik29_composite_map.png" alt="Composite land-cover map of Pamfila" style="max-height:446px;">
         <div class="figcap"><span class="lang-en">Three diagonal zones – elevation · classification · thermal – over shaded relief, with RGB magnifier lenses (ArcPy + matplotlib, poster 66×38.6 cm).</span><span class="lang-el">Τρεις διαγώνιες ζώνες – υψόμετρο · ταξινόμηση · θερμικό – πάνω σε σκιασμένο ανάγλυφο, με μεγεθυντικούς φακούς RGB (ArcPy + matplotlib, αφίσα 66×38,6 cm).</span></div>
         <a class="btn-link" href="https://nickkoro21.github.io/lesvos-altum-segmentation/" target="_blank" rel="noopener"><span class="btn-ico">🌐</span> <span class="lang-en">Open the interactive map</span><span class="lang-el">Άνοιγμα του διαδραστικού χάρτη</span></a>
       </div>
       <div class="logo-bar">
-        <img src="../assets/logos/tmima_logo.png" alt="Department">
-        <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
+        <img data-src="../assets/logos/tmima_logo.png" alt="Department">
+        <img data-src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
       </div>
     </section>
 
@@ -1286,8 +1286,8 @@
       </table>
       <div class="slide-fn">Zorzi et al. (2021); Sujatha &amp; Selvathi (2015). · MIT-licensed on GitHub.</div>
       <div class="logo-bar">
-        <img src="../assets/logos/tmima_logo.png" alt="Department">
-        <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
+        <img data-src="../assets/logos/tmima_logo.png" alt="Department">
+        <img data-src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
       </div>
     </section>
 
@@ -1480,8 +1480,8 @@
         </div>
       </div>
       <div class="logo-bar">
-        <img src="../assets/logos/tmima_logo.png" alt="Department">
-        <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
+        <img data-src="../assets/logos/tmima_logo.png" alt="Department">
+        <img data-src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
       </div>
     </section>
 
@@ -1495,8 +1495,8 @@
         </div>
       </div>
       <div class="logo-bar">
-        <img src="../assets/logos/tmima_logo.png" alt="Department">
-        <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
+        <img data-src="../assets/logos/tmima_logo.png" alt="Department">
+        <img data-src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
       </div>
     </section>
 
@@ -1504,44 +1504,44 @@
     <section data-transition="slide">
       <div class="kicker"><span class="lang-en">Map &amp; tool · output layout – vehicles</span><span class="lang-el">Χάρτης &amp; εργαλείο · διάταξη εξόδου – vehicles</span></div>
       <h2 class="slide-title"><span class="lang-en">Vehicle Analysis: vehicles as <em>clean polygons</em></span><span class="lang-el">Vehicle Analysis: vehicles ως <em>καθαρά πολύγωνα</em></span></h2>
-      <div class="bigfig"><img src="../assets/layouts/Vehicle_Analysis_layout.png" alt="Vehicle Analysis output layout"></div>
+      <div class="bigfig"><img data-src="../assets/layouts/Vehicle_Analysis_layout.png" alt="Vehicle Analysis output layout"></div>
       <div class="stat-line"><span class="lang-en"><b>53</b> accepted · 50 rejected · <b>415 m²</b> · polygons + centroids · area / shape filters.</span><span class="lang-el"><b>53</b> αποδεκτά · 50 απορριφθέντα · <b>415 m²</b> · πολύγωνα + κεντροειδή · φίλτρα έκτασης / σχήματος.</span></div>
       <div class="logo-bar">
-        <img src="../assets/logos/tmima_logo.png" alt="Department">
-        <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
+        <img data-src="../assets/logos/tmima_logo.png" alt="Department">
+        <img data-src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
       </div>
     </section>
 
     <section data-transition="slide">
       <div class="kicker"><span class="lang-en">Map &amp; tool · output layout – buildings</span><span class="lang-el">Χάρτης &amp; εργαλείο · διάταξη εξόδου – buildings</span></div>
       <h2 class="slide-title"><span class="lang-en">Building Analysis: <em>regularised footprints</em></span><span class="lang-el">Building Analysis: <em>κανονικοποιημένα αποτυπώματα</em></span></h2>
-      <div class="bigfig"><img src="../assets/layouts/Building_Analysis_layout.png" alt="Building Analysis output layout"></div>
+      <div class="bigfig"><img data-src="../assets/layouts/Building_Analysis_layout.png" alt="Building Analysis output layout"></div>
       <div class="stat-line"><span class="lang-en"><b>82</b> accepted · 182 rejected · <b>11,030 m²</b> · orthogonalised polygons · nDSM-gated.</span><span class="lang-el"><b>82</b> αποδεκτά · 182 απορριφθέντα · <b>11.030 m²</b> · ορθογωνισμένα πολύγωνα · με πύλη nDSM.</span></div>
       <div class="logo-bar">
-        <img src="../assets/logos/tmima_logo.png" alt="Department">
-        <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
+        <img data-src="../assets/logos/tmima_logo.png" alt="Department">
+        <img data-src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
       </div>
     </section>
 
     <section data-transition="slide">
       <div class="kicker"><span class="lang-en">Map &amp; tool · output layout – trees</span><span class="lang-el">Χάρτης &amp; εργαλείο · διάταξη εξόδου – trees</span></div>
       <h2 class="slide-title"><span class="lang-en">Tree Analysis: <em>canopy polygons</em></span><span class="lang-el">Tree Analysis: <em>πολύγωνα κόμης</em></span></h2>
-      <div class="bigfig"><img src="../assets/layouts/Tree_Analysis_layout.png" alt="Tree Analysis output layout"></div>
+      <div class="bigfig"><img data-src="../assets/layouts/Tree_Analysis_layout.png" alt="Tree Analysis output layout"></div>
       <div class="stat-line"><span class="lang-en"><b>573</b> accepted · 321 rejected · <b>23,970 m²</b> · polygons + centroids.</span><span class="lang-el"><b>573</b> αποδεκτά · 321 απορριφθέντα · <b>23.970 m²</b> · πολύγωνα + κεντροειδή.</span></div>
       <div class="logo-bar">
-        <img src="../assets/logos/tmima_logo.png" alt="Department">
-        <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
+        <img data-src="../assets/logos/tmima_logo.png" alt="Department">
+        <img data-src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
       </div>
     </section>
 
     <section data-transition="slide">
       <div class="kicker"><span class="lang-en">Map &amp; tool · output layout – roads</span><span class="lang-el">Χάρτης &amp; εργαλείο · διάταξη εξόδου – roads</span></div>
       <h2 class="slide-title"><span class="lang-en">Road Analysis: polygons <em>and centerlines</em></span><span class="lang-el">Road Analysis: πολύγωνα <em>και κεντρικές γραμμές</em></span></h2>
-      <div class="bigfig"><img src="../assets/layouts/Road_Analysis_layout.png" alt="Road Analysis output layout"></div>
+      <div class="bigfig"><img data-src="../assets/layouts/Road_Analysis_layout.png" alt="Road Analysis output layout"></div>
       <div class="stat-line"><span class="lang-en"><b>44</b> accepted · 254 rejected · <b>9,540 m²</b> · polygons + Voronoi medial-axis polylines.</span><span class="lang-el"><b>44</b> αποδεκτά · 254 απορριφθέντα · <b>9.540 m²</b> · πολύγωνα + πολυγραμμές μέσου άξονα Voronoi.</span></div>
       <div class="logo-bar">
-        <img src="../assets/logos/tmima_logo.png" alt="Department">
-        <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
+        <img data-src="../assets/logos/tmima_logo.png" alt="Department">
+        <img data-src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
       </div>
     </section>
 
@@ -1567,14 +1567,14 @@
         </div>
         <div style="text-align:center;">
           <div style="display:inline-block; padding:12px; border:2px solid var(--c-7band); border-radius:14px; background:#fff; box-shadow:0 4px 14px rgba(46,134,171,0.18);">
-            <img src="../assets/logos/qr_github.png" alt="QR to GitHub toolbox" style="width:130px;height:130px;display:block;">
+            <img data-src="../assets/logos/qr_github.png" alt="QR to GitHub toolbox" style="width:130px;height:130px;display:block;">
           </div>
           <div class="lc-note" style="margin-top:.5em;"><span class="lang-en">Scan → PostProcessing Toolbox (GitHub)</span><span class="lang-el">Σάρωση → PostProcessing Toolbox (GitHub)</span></div>
         </div>
       </div>
       <div class="logo-bar">
-        <img src="../assets/logos/tmima_logo.png" alt="Department">
-        <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
+        <img data-src="../assets/logos/tmima_logo.png" alt="Department">
+        <img data-src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
       </div>
     </section>
 
@@ -1588,8 +1588,8 @@
       <div class="rq fragment" data-fragment-index="4"><span class="lang-en"><span class="rq-q">RQ4 · Geospatial product.</span> The raster converts to structured vector layers via the Toolbox. <span class="sig">H4 ✓</span></span><span class="lang-el"><span class="rq-q">RQ4 · Γεωχωρικό προϊόν.</span> Ο raster μετατρέπεται σε δομημένα διανυσματικά επίπεδα μέσω της Εργαλειοθήκης. <span class="sig">H4 ✓</span></span></div>
       <div class="callout fragment fade-up" data-fragment-index="5" style="margin-top:.5em; margin-right:185px;"><span class="lang-en">The deeper lesson: <strong>more channels help only when they add non-spectral information</strong> – geometry and heat – that a strong spatial model can't already infer from colour.</span><span class="lang-el">Το βαθύτερο δίδαγμα: <strong>τα περισσότερα κανάλια βοηθούν μόνο όταν προσθέτουν μη-φασματική πληροφορία</strong> – γεωμετρία και θερμότητα – που ένα ισχυρό χωρικό μοντέλο δεν μπορεί ήδη να συμπεράνει από το χρώμα.</span></div>
       <div class="logo-bar">
-        <img src="../assets/logos/tmima_logo.png" alt="Department">
-        <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
+        <img data-src="../assets/logos/tmima_logo.png" alt="Department">
+        <img data-src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
       </div>
     </section>
 
@@ -1619,8 +1619,8 @@
       <div class="callout fragment fade-up" data-fragment-index="3" style="margin-top:.55em; margin-right:185px;"><span class="lang-en">Most of the advantage is <strong>geometric (nDSM)</strong> — an agency already producing DSM/DTM captures most of it <strong>even without a thermal sensor</strong>. The 7-Band cost: more data, heavier photogrammetry, a critical nDSM step.</span><span class="lang-el">Το μεγαλύτερο μέρος του πλεονεκτήματος είναι <strong>γεωμετρικό (nDSM)</strong> — μια υπηρεσία που ήδη παράγει DSM/DTM το κερδίζει σε μεγάλο βαθμό <strong>ακόμη και χωρίς θερμικό αισθητήρα</strong>. Το κόστος του 7-Band: περισσότερα δεδομένα, βαρύτερη φωτογραμμετρία, ένα κρίσιμο βήμα nDSM.</span></div>
       <div class="slide-fn">§7.6 – πρακτικές &amp; επιχειρησιακές προεκτάσεις.</div>
       <div class="logo-bar">
-        <img src="../assets/logos/tmima_logo.png" alt="Department">
-        <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
+        <img data-src="../assets/logos/tmima_logo.png" alt="Department">
+        <img data-src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
       </div>
     </section>
 
@@ -1638,8 +1638,8 @@
       </ul>
       <div class="slide-fn">Buda et al. (2018); Johnson &amp; Khoshgoftaar (2019); Hughes (1968); Ülkü et al. (2022).</div>
       <div class="logo-bar">
-        <img src="../assets/logos/tmima_logo.png" alt="Department">
-        <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
+        <img data-src="../assets/logos/tmima_logo.png" alt="Department">
+        <img data-src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
       </div>
     </section>
 
@@ -1670,14 +1670,14 @@
       </div>
       <div class="slide-fn">Gu &amp; Dao (2023); Perez et al. (2018); Wang et al. (2025); Anthropic (2024).</div>
       <div class="logo-bar">
-        <img src="../assets/logos/tmima_logo.png" alt="Department">
-        <img src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
+        <img data-src="../assets/logos/tmima_logo.png" alt="Department">
+        <img data-src="../assets/logos/RSGIS_logo.png" alt="RSGIS Lab">
       </div>
     </section>
 
     <!-- ===================== Slide 55 – Thank you ========================== -->
     <section class="cover" data-transition="fade">
-      <img class="cover-logo" src="../assets/logos/uaegean-university.png" alt="University of the Aegean">
+      <img class="cover-logo" data-src="../assets/logos/uaegean-university.png" alt="University of the Aegean">
       <h1 style="font-size:1.7em;"><span class="lang-en">Thank you</span><span class="lang-el">Ευχαριστώ</span></h1>
       <div class="subtitle"><span class="lang-en">Questions &amp; discussion</span><span class="lang-el">Ερωτήσεις &amp; συζήτηση</span></div>
       <div class="one-liner"><span class="lang-en">More channels help, but the advantage is <em>geometry (nDSM)</em> and <em>thermal (LWIR)</em>, not colour.</span><span class="lang-el">Τα περισσότερα κανάλια βοηθούν, αλλά το πλεονέκτημα είναι η <em>γεωμετρία (nDSM)</em> και η <em>θερμότητα (LWIR)</em>, όχι το χρώμα.</span></div>
