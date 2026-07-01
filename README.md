@@ -86,8 +86,9 @@ Or just open `deck/index.html` in a browser — everything is self-contained.
 
 ## Author
 
-**Nikolaos Koroniadis** — MSc *Geography & Applied Geoinformatics*, University of the Aegean
-Supervisor: Assist. Prof. Dr. Christos Vasilakos · Mytilene, 2026
+**Nikolaos Koroniadis** — MSc *Geography & Applied Geoinformatics*, University of the Aegean · Mytilene, 2026
+
+**Supervisor:** Assist. Prof. Dr. Christos Vasilakos — Department of Geography, University of the Aegean
 
 ### Companion deliverables
 
