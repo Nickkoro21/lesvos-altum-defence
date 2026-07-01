@@ -663,3 +663,18 @@ body.lang-el .lang-en { display: none; }
   #rotateHint .rh-x { margin-left: 2px; padding: 0 4px; cursor: pointer; color: rgba(255,255,255,0.72); font-weight: 700; }
   body.rh-dismissed #rotateHint { display: none; }
 }
+
+/* ============================================================
+   GREEK-MODE (EL) OVERFLOW FIXES
+   Greek strings run longer than English, so three slides clipped only
+   when body.lang-el is active. Each fix is scoped so the English layout
+   (already audited 0/56) is untouched. No content removed.
+   ============================================================ */
+/* slide 7 — let the long GR table headers wrap instead of forcing width
+   (harmless to EN: its short headers stay on one line) */
+#task-fit-table thead th { white-space: normal; }
+/* slide 29 — the taller GR convergence callout now fits above the logo bar */
+body.lang-el #conv-callout { font-size: 0.84em; line-height: 1.2; }
+/* slide 43 — give the longer GR figure caption room under the composite map */
+body.lang-el #composite-fig img { max-height: 372px !important; }
+body.lang-el #composite-fig .figcap { font-size: 0.8em; line-height: 1.2; }

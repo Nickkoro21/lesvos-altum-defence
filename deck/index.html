@@ -173,7 +173,7 @@
     <section data-transition="slide">
       <div class="kicker"><span class="lang-en">Background · choosing the task</span><span class="lang-el">Υπόβαθρο · η επιλογή της εργασίας</span></div>
       <h2 class="slide-title"><span class="lang-en">For per-pixel land cover, <em>semantic segmentation</em> is the right tool</span><span class="lang-el">Για κάλυψη γης ανά pixel, η <em>σημασιολογική κατάτμηση</em> είναι το σωστό εργαλείο</span></h2>
-      <table class="tbl">
+      <table class="tbl" id="task-fit-table">
         <thead>
           <tr><th><span class="lang-en">Vision task</span><span class="lang-el">Εργασία όρασης</span></th><th><span class="lang-en">Output</span><span class="lang-el">Έξοδος</span></th><th class="center"><span class="lang-en">Per-pixel labels</span><span class="lang-el">Ετικέτες ανά pixel</span></th><th class="center"><span class="lang-en">Separates instances</span><span class="lang-el">Διαχωρίζει στιγμιότυπα</span></th><th class="center"><span class="lang-en">Compute load</span><span class="lang-el">Υπολογιστικός φόρτος</span></th><th class="center"><span class="lang-en">Fit for land-cover</span><span class="lang-el">Καταλληλότητα για κάλυψη γης</span></th></tr>
         </thead>
@@ -733,7 +733,7 @@
         </div>
       </div>
       <div class="cols s-60-40" style="margin-top:.25em;">
-        <div class="callout fragment fade-up" style="margin-right:0;">
+        <div class="callout fragment fade-up" id="conv-callout" style="margin-right:0;">
           <span class="lang-en"><span style="color:var(--c-7band);font-weight:700;">7-Band</span>: 25 epochs (best ~18) → val loss <strong>0.22</strong> · acc <strong>0.97</strong> · Dice <strong>0.97</strong>.
           <span style="color:var(--c-rgb);font-weight:700;">RGB</span>: stops at 12 (best 5) → val loss 0.38 · acc 0.89 · Dice 0.89. Both smooth – <strong>no overfitting</strong>.</span><span class="lang-el"><span style="color:var(--c-7band);font-weight:700;">7-Band</span>: 25 epochs (καλύτερο ~18) → val loss <strong>0,22</strong> · acc <strong>0,97</strong> · Dice <strong>0,97</strong>.
           <span style="color:var(--c-rgb);font-weight:700;">RGB</span>: σταματά στο 12 (καλύτερο 5) → val loss 0,38 · acc 0,89 · Dice 0,89. Και τα δύο ομαλά – <strong>χωρίς overfitting</strong>.</span>
@@ -1259,7 +1259,7 @@
     <section data-transition="slide">
       <div class="kicker"><span class="lang-en">Map &amp; tool · the composite map</span><span class="lang-el">Χάρτης &amp; εργαλείο · ο σύνθετος χάρτης</span></div>
       <h2 class="slide-title"><span class="lang-en">One map, <em>three readings</em>: height, land cover, and heat</span><span class="lang-el">Ένας χάρτης, <em>τρεις αναγνώσεις</em>: ύψος, κάλυψη γης και θερμότητα</span></h2>
-      <div class="bigfig">
+      <div class="bigfig" id="composite-fig">
         <img data-src="../assets/results/Eik29_composite_map.png" alt="Composite land-cover map of Pamfila" style="max-height:446px;">
         <div class="figcap"><span class="lang-en">Three diagonal zones – elevation · classification · thermal – over shaded relief, with RGB magnifier lenses (ArcPy + matplotlib, poster 66×38.6 cm).</span><span class="lang-el">Τρεις διαγώνιες ζώνες – υψόμετρο · ταξινόμηση · θερμικό – πάνω σε σκιασμένο ανάγλυφο, με μεγεθυντικούς φακούς RGB (ArcPy + matplotlib, αφίσα 66×38,6 cm).</span></div>
         <a class="btn-link" href="https://nickkoro21.github.io/lesvos-altum-segmentation/" target="_blank" rel="noopener"><span class="btn-ico">🌐</span> <span class="lang-en">Open the interactive map</span><span class="lang-el">Άνοιγμα του διαδραστικού χάρτη</span></a>
