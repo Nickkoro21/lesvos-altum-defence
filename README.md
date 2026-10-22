@@ -13,6 +13,8 @@
 
 [**▶ Open the presentation**](https://nickkoro21.github.io/lesvos-altum-defence/) ·
 [**📊 Source code**](https://github.com/Nickkoro21/lesvos-altum-defence) ·
+[**📄 Slides (PDF, EN / ΕΛ)**](https://github.com/Nickkoro21/lesvos-altum-defence/releases/tag/defence-slides) ·
+[**📘 MSc thesis (PDF)**](https://github.com/Nickkoro21/lesvos-altum-defence/releases/tag/msc-thesis) ·
 [**🎓 University of the Aegean**](https://www.aegean.gr/)
 
 </div>
@@ -100,7 +102,7 @@ Or just open `deck/index.html` in a browser — everything is self-contained.
 
 ## Citation
 
-If you refer to this work, please cite the MSc thesis. A machine-readable [`CITATION.cff`](CITATION.cff) is included, so you can use the **“Cite this repository”** button on GitHub.
+If you refer to this work, please cite the MSc thesis ([**full text, PDF**](https://github.com/Nickkoro21/lesvos-altum-defence/releases/tag/msc-thesis)). A machine-readable [`CITATION.cff`](CITATION.cff) is included, so you can use the **“Cite this repository”** button on GitHub.
 
 > Koroniadis, N. (2026). *Development of a GIS Application for the Automatic Classification of Multispectral & Thermal UAV Images Using Convolutional Neural Networks* (MSc thesis). University of the Aegean, Department of Geography, Mytilene.
 
