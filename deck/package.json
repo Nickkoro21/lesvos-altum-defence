@@ -6,7 +6,7 @@
   "license": "MIT",
   "dependencies": {
     "katex": "^0.16.11",
-    "puppeteer": "^25.2.0",
+    "puppeteer": "^25.16.0",
     "reveal.js": "^5.1.0"
   }
 }
